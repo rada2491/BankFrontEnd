@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Login from './pages/home/'
+import 'babel-polyfill';
 
 class App extends Component {
   render() {
