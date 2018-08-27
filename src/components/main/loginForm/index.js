@@ -36,7 +36,7 @@ class Example extends React.Component {
       <Form inline>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Label for="exampleEmail" className="mr-sm-2">Email</Label>
-          <Input value="cbr2491@gmail.com" type="email" name="email" id="exampleEmail" placeholder="something@idk.cool" />
+          <Input value="indira@gmail.com" type="email" name="email" id="exampleEmail" placeholder="something@idk.cool" />
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Label for="examplePassword" className="mr-sm-2">Password</Label>
