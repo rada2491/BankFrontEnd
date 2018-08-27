@@ -56,7 +56,6 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-
     "build": "webpack --mode production",
     "start-client": "webpack-dev-server --open --mode development",
     "start": "webpack-dev-server --open --mode development"
