@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
-import './App.css';
-import Login from './pages/home/'
+import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { map } from 'ramda';
+import { Animated } from "react-animated-css";
 import 'babel-polyfill';
+//import './scss/animate.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import './App.css';
+import 'babel-polyfill';
+
+// Login page
+import Login from './pages/home/'
+import Panel from './components/header/'
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-        </header>
-        <main>
-          <Login />
-        </main>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <main>
+              <React.Fragment>
+                <Route exact path="/" component={Login} />
+                <Route path='/panel' component={Panel} />
+              </React.Fragment>
+          </main>
+        </div>
+      </BrowserRouter>
     );
   }
 }

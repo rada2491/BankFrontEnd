@@ -3,15 +3,15 @@ import * as a from '../actions/types'
 const API = 'https://localhost:44318/api/autho/login';
 const API2 = 'https://localhost:44318/api/admin';
 const API3 = 'https://localhost:44318/api/client/';
-const API4 = 'https://localhost:44318/api/account/transaction';
+//const API4 = 'https://localhost:44318/api/account/transaction';
 let token, autho, email, id, name;
 
 /* Test transaction */
-let tran = {
+/*let tran = {
   'origin': '7946138520',
   'destiny': '79461385',
   'mount': 25000000000000000
-}
+}*/
 
 export default function loginCredentials(credentials) {
   return async dispatch => {
@@ -41,13 +41,14 @@ export default function loginCredentials(credentials) {
       sessionStorage.setItem("userName", name)
       sessionStorage.setItem("userEmail", email)
       sessionStorage.setItem("Authorization", autho)
-      console.log(sessionStorage.getItem("token"))
+      sessionStorage.setItem("login", true)
+      /*console.log(sessionStorage.getItem("token"))
       console.log(sessionStorage.getItem("userId"))
       console.log(sessionStorage.getItem("userName"))
       console.log(sessionStorage.getItem("userEmail"))
-      console.log(sessionStorage.getItem("Authorization"))
+      console.log(sessionStorage.getItem("Authorization"))*/
 
-      console.log(tran)
+      /*console.log(tran)
       await fetch(API4, {
         method: 'POST',
         body: JSON.stringify(tran),
@@ -56,7 +57,7 @@ export default function loginCredentials(credentials) {
           'Authorization': 'Bearer ' + sessionStorage.getItem("token")
         }
       }).then(success => console.log('Success:', success))
-        .catch(error => console.log('Error:', error))
+        .catch(error => console.log('Error:', error))*/
 
       if (sessionStorage.getItem("Authorization") === "Admin") {
         const myHeaders = new Headers({
@@ -80,7 +81,7 @@ export default function loginCredentials(credentials) {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
       });
-      const response2 = await fetch(API3 + autho, {
+      const response2 = await fetch(API3, {
         method: 'GET',
         headers: myHeaders
       })
