@@ -1,7 +1,7 @@
 import * as a from '../actions/types'
 
 const INITIAL_STATE = {
-  login: [],
+  user: [],
   isLoaded: false
 }
 
@@ -14,7 +14,8 @@ export default function newsReducer(state = INITIAL_STATE, action) {
       }
     case a.LOGIN_SUCCESS:
       return {
-        //...state,
+        ...state,
+        user: action.payload,
         isLoaded: true
       }
     default:

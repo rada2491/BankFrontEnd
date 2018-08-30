@@ -19,34 +19,29 @@ export default function loginCredentials(credentials) {
       type: a.LOGIN_REQUEST
     })
     try {
-      await fetch(API, {
+      //console.log('hola')
+      const response = await fetch(API, {
         method: 'POST',
         body: JSON.stringify(credentials),
         headers: {
           'Content-Type': 'application/json'
         }
-      }).then(response => { return response.json() })
-        .then(body => {
-          token = body.token
-          autho = body.authorization
-          email = body.userEmail
-          id = body.id
-          name = body.userName
-        })
-        .then(success => console.log('Success:', success))
-        .catch(error => console.log('Error:', error))
+      })
+      //console.log('hola2')
+      const result = await response.json()
 
-      sessionStorage.setItem("token", token)
-      sessionStorage.setItem("userId", id)
-      sessionStorage.setItem("userName", name)
-      sessionStorage.setItem("userEmail", email)
-      sessionStorage.setItem("Authorization", autho)
-      sessionStorage.setItem("login", true)
-      /*console.log(sessionStorage.getItem("token"))
-      console.log(sessionStorage.getItem("userId"))
-      console.log(sessionStorage.getItem("userName"))
-      console.log(sessionStorage.getItem("userEmail"))
-      console.log(sessionStorage.getItem("Authorization"))*/
+      dispatch({
+        type: a.LOGIN_SUCCESS,
+        payload: result
+      })
+      //console.log('result')
+      /*let body = {
+        token: body.token,
+        autho: body.authorization,
+        email: body.userEmail,
+        id: body.id,
+        name: body.userName
+      }*/
 
       /*console.log(tran)
       await fetch(API4, {
@@ -59,7 +54,7 @@ export default function loginCredentials(credentials) {
       }).then(success => console.log('Success:', success))
         .catch(error => console.log('Error:', error))*/
 
-      if (sessionStorage.getItem("Authorization") === "Admin") {
+      /*if (sessionStorage.getItem("Authorization") === "Admin") {
         const myHeaders = new Headers({
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + token
@@ -75,9 +70,9 @@ export default function loginCredentials(credentials) {
           type: a.LOGIN_SUCCESS,
           payload: result2
         })
-      }
+      }*/
 
-      const myHeaders = new Headers({
+      /*const myHeaders = new Headers({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
       });
@@ -90,7 +85,7 @@ export default function loginCredentials(credentials) {
       dispatch({
         type: a.LOGIN_SUCCESS,
         payload: result2
-      })
+      })*/
 
     } catch (error) {
       dispatch({

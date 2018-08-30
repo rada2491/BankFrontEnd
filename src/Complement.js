@@ -19,19 +19,9 @@ import Header from './components/header/'
 import AdminAside from './components/main/adminAside/'
 
 
-class App extends Component {
-
-  componentDidMount() {
-    sessionStorage.setItem('login', false)
-  }
-
+class Complement extends Component {
   render() {
-    if (!sessionStorage.getItem('login')) {
-      return (
-        <Route exact path="/" component={Login} />
-      )
-    }
-    if (sessionStorage.getItem("login")) {
+    if (sessionStorage.getItem("login") === 'true') {
       if (sessionStorage.getItem("Authorization") === "Admin") {
         return (
           <div>
@@ -78,4 +68,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Complement;

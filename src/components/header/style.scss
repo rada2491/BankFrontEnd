@@ -1,0 +1,46 @@
+.SA-header {
+  background: #9FBAA1;
+  height: auto;
+  padding: 10px 0;
+
+  &__container{
+      margin-right: 20px;
+  }
+
+  &__container-logo {
+      height: 62px;
+  }
+
+  &__nav {
+      display: flex;
+      width: 100%;
+      list-style: none;
+      padding-top: 22px;
+      float: right;
+  }
+
+  &__nav-item{
+      display: block;
+      padding-left: 30px;
+      color: #fff !important;
+      cursor: pointer;
+
+  }
+  &__nav-item:hover {
+      color: #000 !important;
+      text-decoration: underline !important;
+  }
+
+  &__modal-title {
+      margin-bottom: 10px;
+      h5 {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+  }
+}
+
+  &__modal {
+      padding: 10px;
+  }
+}
