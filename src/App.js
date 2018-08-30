@@ -22,7 +22,7 @@ class App extends Component {
         <div className="App">
           <main>
               <React.Fragment>
-                <Route exact path="/" component={Login} />
+                <Route exact path="/" component={Panel} />
                 <Route path='/panel' component={Panel} />
               </React.Fragment>
           </main>
