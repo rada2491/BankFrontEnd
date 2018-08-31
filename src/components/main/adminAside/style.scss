@@ -1,3 +1,35 @@
+/* General styles for all menus */
+.cbp-spmenu {
+	background: #9FBAA1;
+	position: absolute;
+}
+
+.cbp-spmenu h3 {
+	color: #afdefa;
+	font-size: 1.9em;
+	padding: 20px;
+	margin: 0;
+	font-weight: 300;
+	background: #0d77b6;
+	border-bottom: 1px solid #258ecd;
+}
+
+.cbp-spmenu a {
+	display: block;
+	color: #fff;
+	font-size: 1.1em;
+	font-weight: 300;
+}
+
+.cbp-spmenu a:hover {
+	background: #258ecd;
+}
+
+.cbp-spmenu a:active {
+	background: #afdefa;
+	/*color: #47a3da;*/
+}
+
 .right-side,
 .left-side {
   min-height: 100%;
@@ -6,7 +38,7 @@
 
 .left-side {
   position: absolute;
-  width: 220px;
+  width: 224px;
   top: 0;
 }
 

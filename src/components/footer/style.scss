@@ -1,0 +1,46 @@
+footer {
+  background: #00203d;
+  /*padding: 50px;*/
+  font-size: 80%;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+  color: #000;
+  text-align: center;
+  font-size: 90%;
+  margin-top: 20px;
+}
+
+.footer-nav {
+  list-style: none;
+  float: left;
+}
+
+.footer-nav-icons {
+  list-style: none;
+  float: right;
+}
+
+
+.footer-nav li,
+.footer-nav-icons li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.footer-nav li:last-child {
+  margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.footer-nav-icons li a:link,
+.footer-nav-icons li a:visited{
+  text-decoration: none;
+  border: 0;
+  color: #000;
+  transition: color 0.2s;
+}

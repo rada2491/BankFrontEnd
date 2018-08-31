@@ -1,21 +1,21 @@
 import * as a from '../actions/types'
 
 const INITIAL_STATE = {
-  user: [],
+  createUser: [],
   isLoaded: false
 }
 
-export default function loginRequest(state = INITIAL_STATE, action) {
+export default function createUserReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case a.LOGIN_REQUEST:
+    case a.CREATE_USER_REQUEST:
       return {
         //...state,
         isLoaded: false
       }
-    case a.LOGIN_SUCCESS:
+    case a.CREATE_USER_SUCCESS:
       return {
         ...state,
-        user: action.payload,
+        createUser: action.payload,
         isLoaded: true
       }
     default:

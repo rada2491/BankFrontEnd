@@ -28,14 +28,14 @@ class Example extends React.Component {
     user = document.getElementById('userId').value;
     password = document.getElementById('userPassword').value;
 
-    let addNew = {
+    let logCre = {
       "email": user,
       "password": password
     }
 
-    console.log(addNew)
+    console.log(logCre)
 
-    this.props.loginCredentials(addNew)
+    this.props.loginCredentials(logCre)
   }
 
   componentDidUpdate(prevProps) {

@@ -26,27 +26,22 @@ class Example extends React.Component {
   }
 
   render() {
-    if (sessionStorage.getItem("login") === 'true') {
-      if (sessionStorage.getItem("Authorization") === "Admin") {
+
+    if (sessionStorage.getItem("Authorization") === "Admin") {
+      return (
+        <div>
+          Hola admi
+          </div>
+      );
+    }
+    else {
+      if (sessionStorage.getItem("Authorization") === 'Client') {
         return (
           <div>
-            <Header />
-            <AdminAside />
+            Hola Cliente
           </div>
         );
       }
-      else {
-        if (sessionStorage.getItem("Authorization") === 'Client') {
-          return (
-            <h1>Hola cliente</h1>
-          );
-        }
-      }
-    }
-    else {
-      return (
-        <Redirect to={'/'} />
-      );
     }
   }
 }

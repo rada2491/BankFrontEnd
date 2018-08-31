@@ -16,7 +16,7 @@ import lol from './lala'
 
 //Aside
 //import UserAside from '../userAside/'
-import AdminAside from '../../components/main/adminAside/'
+import Panel from '../../components/main/userPanel/index'
 
 class Example extends React.Component {
 
@@ -29,7 +29,7 @@ class Example extends React.Component {
 
   render() {
     return (
-      <div></div>
+      <Panel />
     )
 
   }

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { map } from 'ramda';
 import { Animated } from "react-animated-css";
 import 'babel-polyfill';
-//import './scss/animate.css';
+import './scss/main.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import './App.css';
@@ -17,6 +17,8 @@ import Panel from './pages/panel/'
 import lol from './containers/panel/lala'
 import Header from './components/header/'
 import AdminAside from './components/main/adminAside/'
+
+import Complement from './Complement'
 
 
 class App extends Component {
@@ -31,50 +33,11 @@ class App extends Component {
         <Route exact path="/" component={Login} />
       )
     }
-    if (sessionStorage.getItem("login")) {
-      if (sessionStorage.getItem("Authorization") === "Admin") {
-        return (
-          <div>
-            <Header />
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col-md-2">
-                  <div>
-                    <div className='main'>
-                    </div>
-                    <nav className='cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left' id='cbp-spmenu-s1'>
-                      <AdminAside />
-                    </nav>
-                  </div>
-                </div>
-                <div className="col-md-10">
-                  <main>
-                    <Switch>
-                      <Route path='/panel/' component={Panel} />
-                      <Route exact path="/panel1" component={() => <div>qweqwe</div>} />
-                      <Route path="/panel2" component={lol} />
-                    </Switch>
-                  </main>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      }
-      else {
-        if (sessionStorage.getItem("Authorization") === 'Client') {
-          return (
-            <h1>Hola cliente</h1>
-          );
-        }
-      }
-    }
     else {
       return (
-        <Redirect to={'/'} />
-      );
+        <Complement />
+      )
     }
-
   }
 }
 
