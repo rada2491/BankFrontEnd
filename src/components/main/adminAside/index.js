@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import './style.scss';
 
 
@@ -22,38 +21,32 @@ export default class Aside extends React.Component {
   render() {
     if (sessionStorage.getItem('Authorization') === 'Admin') {
       return (
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-2">
-              <aside className="left-side sidebar-offcanvas cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
-                <section className="sidebar">
-                  <ul className="sidebar-menu">
-                    <li>
-                      <Link key='1' to='/panelRegisterUser'>Create User</Link>
-                    </li>
-                    <li className="active">
-                      <Link key='2' to='/panel'>Create Account</Link>
-                    </li>
+        <aside className="left-side sidebar-offcanvas cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
+          <section className="sidebar">
+            <ul className="sidebar-menu">
+              <li>
+                <Link key='1' to='/panelRegisterUser'>Create User</Link>
+              </li>
+              <li className="active">
+                <Link key='2' to='/panel'>Create Account</Link>
+              </li>
 
-                    <li>
-                      <Link key='3' to='/panel'>Add new Payment</Link>
-                    </li>
-                    <li>
-                      <Link key='4' to='/panel'>Update Client</Link>
-                    </li>
-                    <li>
-                      <Link key='5' to='/panel'>Delete account</Link>
-                    </li>
-                    <li>
-                      <Link to='/panel1'>lala</Link>
-                      <Link to='/panel2'>lala</Link>
-                    </li>
-                  </ul>
-                </section>
-              </aside>
-            </div>
-          </div>
-        </div>
+              <li>
+                <Link key='3' to='/panel'>Add new Payment</Link>
+              </li>
+              <li>
+                <Link key='4' to='/panel'>Update Client</Link>
+              </li>
+              <li>
+                <Link key='5' to='/panel'>Delete account</Link>
+              </li>
+              <li>
+                <Link to='/panel1'>lala</Link>
+                <Link to='/panel2'>lala</Link>
+              </li>
+            </ul>
+          </section>
+        </aside>
       );
     }
     else {

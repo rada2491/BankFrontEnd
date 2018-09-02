@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Redirect } from 'react-router'
-import { connect } from 'react-redux';
-import { map } from 'ramda';
-import { Animated } from "react-animated-css";
-import { Values } from "redux-form-website-template";
+import { Route, Switch } from 'react-router-dom';
 import 'babel-polyfill';
 import './scss/main.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,11 +8,9 @@ import './App.css';
 import 'babel-polyfill';
 
 // Login page
-import Login from './pages/home/'
 import Panel from './pages/panel/'
 import lol from './containers/panel/lala'
 import Header from './components/header/'
-import Footer from './components/footer/'
 import Aside from './components/main/adminAside/'
 
 //Admin
@@ -33,16 +26,14 @@ class Complement extends Component {
           <Header />
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-2">
+              <div className="col-md-2 col-sm-2 col-xs-2">
                 <div>
-                  <div className='main'>
-                  </div>
                   <nav className='cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left' id='cbp-spmenu-s1'>
                     <Aside />
                   </nav>
                 </div>
               </div>
-              <div className="col-md-10">
+              <div className="col-md-10 col-sm-10 col-xs-10">
                 <main>
                   <Switch>
                     <Route path='/panel' component={Panel} />

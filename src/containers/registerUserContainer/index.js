@@ -1,11 +1,11 @@
 import React from 'react';
-import RegisterUser from '../../components/main/registerUser/index'
 import { connect } from 'react-redux'
 import { Values } from "redux-form-website-template";
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import createNewUser from '../../redux/actionCreator/createUser'
+import RegisterUser from '../../components/main/registerUser/index'
 
 class RegisterUserContainer extends React.Component {
 
