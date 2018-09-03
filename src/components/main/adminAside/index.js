@@ -28,7 +28,7 @@ export default class Aside extends React.Component {
                 <Link key='1' to='/panelRegisterUser'>Create User</Link>
               </li>
               <li className="active">
-                <Link key='2' to='/panel'>Create Account</Link>
+                <Link key='2' to='/panelCreateAccount'>Create Account</Link>
               </li>
 
               <li>

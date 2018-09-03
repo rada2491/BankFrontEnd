@@ -2,6 +2,7 @@ import * as a from '../actions/types'
 
 const INITIAL_STATE = {
   createUser: [],
+  userFound: [],
   isLoaded: false
 }
 
@@ -16,6 +17,11 @@ export default function createUserReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         createUser: action.payload,
+        isLoaded: true
+      }
+    case a.FILL_FORM:
+      return {
+        userFound: action.payload,
         isLoaded: true
       }
     default:

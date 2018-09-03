@@ -15,6 +15,7 @@ import Aside from './components/main/adminAside/'
 
 //Admin
 import PageRegisterUser from './pages/registerUser/'
+import PageCreateBankAccount from './pages/createbankAccount/'
 
 
 class Complement extends Component {
@@ -38,7 +39,7 @@ class Complement extends Component {
                   <Switch>
                     <Route path='/panel' component={Panel} />
                     <Route exact path="/panelRegisterUser" component={PageRegisterUser} />
-                    <Route path="/panel2" component={lol} />
+                    <Route path="/panelCreateAccount" component={PageCreateBankAccount} />
                   </Switch>
                 </main>
               </div>
