@@ -16,3 +16,5 @@ export const UPDATE_USER = "UPDATE_USER"
 //get all users
 export const ALL_USER_REQUEST = "ALL_USER_FAILURE"
 export const ALL_USER_SUCCESS = "ALL_USER_SUCCESS"
+export const UPDATE_USER_FAILURE = "UPDATE_USER_FAILURE"
+export const UPDATE_ALL_USERS = "UPDATE_ALL_USERS"

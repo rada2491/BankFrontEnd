@@ -23,7 +23,6 @@ class CreateBankAccountContainer extends React.Component {
 
   render() {
     const { AllUsers } = this.props
-    console.log(AllUsers)
     return (
       <div>
         <CreateBankAccount state={AllUsers} />

@@ -18,7 +18,14 @@ export default function AllUsersReducer(state = INITIAL_STATE, action) {
         AllUsers: action.payload,
         isLoaded: true
       }
+    case a.UPDATE_ALL_USERS:
+      return {
+        ...state,
+        AllUsers: action.payload,
+        isLoaded: true
+      }
     default:
+    console.log('yellow')
       return state
   }
 }

@@ -1,11 +1,15 @@
 import React from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
-import { Form, FormGroup, Label, Modal, Col, Input, Button, Nav, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { connect } from 'react-redux'
+import { Form, FormGroup, Label, Modal, Col, Input, 
+  Button, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import './style.scss'
 
 let userId, accoNumber, accCurrency, accBalance;
+
+import addBankAccount from '../../../redux/actionCreator/addBankAccount'
 
 const columns = [{
   dataField: 'socialNumber',
@@ -53,6 +57,7 @@ class CreateBankAccount extends React.Component {
       modal: false
     }
     this.openModal = this.openModal.bind(this);
+    this.sendSubmit = this.sendSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -78,6 +83,10 @@ class CreateBankAccount extends React.Component {
       , "balance": accBalance.toString()
     }
 
+    this.props.addBankAccount(addAccount)
+    this.setState({
+      modal: !this.state.modal
+    })
     //this.props.updateNews(addNew)
     /*this.setState({
       modal: !this.state.modal
@@ -140,6 +149,14 @@ class CreateBankAccount extends React.Component {
   }
 }
 
-export default CreateBankAccount
+const mapStateToProps = state => ({
+  
+})
+
+const mapDispatchToProps = {
+  addBankAccount
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateBankAccount);
 
 //<BootstrapTable keyField='id' data={users} columns={columns} filter={filterFactory()} />

@@ -3,6 +3,7 @@ import * as a from '../actions/types'
 const API = 'https://localhost:44318/api/admin';
 
 export default function getAllUser() {
+  console.log('hola')
   return async dispatch => {
     dispatch({
       type: a.ALL_USER_REQUEST
