@@ -1,0 +1,65 @@
+import React from 'react';
+import BootstrapTable from 'react-bootstrap-table-next';
+import { Button } from 'reactstrap';
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+import './style.scss'
+
+const columns = [{
+  dataField: 'socialNumber',
+  filter: textFilter(),
+  text: 'Social Number'
+}, {
+  dataField: 'name',
+  text: 'User Name'
+}, {
+  dataField: 'email',
+  text: 'User email'
+},
+{
+  dataField: 'accounts.length',
+  text: 'User Accounts'
+}];
+
+const selectRow = {
+  mode: 'checkbox',
+  clickToSelect: true,
+  hideSelectColumn: true,
+  bgColor: '#9FBAA1',
+  /*onSelect: (row, isSelect, rowIndex, e) => {
+    console.log(row.socialNumber);
+    console.log(isSelect);
+    console.log(rowIndex);
+    console.log(e);
+  }*/
+  
+};
+
+const rowEvents = {
+  onClick: (e, row, rowIndex) => {
+    alert(`clicked on row with index: ${row.socialNumber}`);
+  }
+};
+
+export default ({ state }) => {
+
+  return (
+    <div className='container-fluid RB-register'>
+      <div className="row">
+        <div className="col-md-12">
+          <BootstrapTable
+            keyField='socialNumber'
+            data={state}
+            columns={columns}
+            filter={filterFactory()}
+            selectRow={selectRow}
+            pagination={paginationFactory()}
+            rowEvents={ rowEvents } />
+        </div>
+      </div>
+    </div>
+
+  )
+}
+
+//<BootstrapTable keyField='id' data={users} columns={columns} filter={filterFactory()} />
