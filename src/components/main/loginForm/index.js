@@ -71,7 +71,8 @@ class Example extends React.Component {
                 <span className="login100-form-title p-b-41">
                   Account Login
             </span>
-                <Form className="login100-form validate-form p-b-33 p-t-5">
+                <Form className="login100-form validate-form p-b-33 p-t-5 form-style">
+                  <img src="https://res.cloudinary.com/radacloud/image/upload/v1536014090/React-Bank/Bank.png" alt=""/>
                   <div className="wrap-input100 validate-input" data-validate="Enter username">
                     <Input id='userId' className="input100" type="text" name="username" placeholder="User name" />
                   </div>

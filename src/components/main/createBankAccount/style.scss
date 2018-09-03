@@ -1,4 +1,7 @@
-.table-bordered td, .table-bordered thead th {
-  border: 1px solid #9FBAA1 !important;
-  
+.table-bordered{
+  border: none !important
+}
+
+.table-content{
+  text-align: center;
 }

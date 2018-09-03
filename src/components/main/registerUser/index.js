@@ -48,7 +48,7 @@ class ContactForm extends Component {
     return (
       <div className='container-fluid RB-register'>
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-10 user-form-container">
             <form onSubmit={handleSubmit}>
               <div className="row">
                 <div className="input-group input-group-icon RB-register__container">
@@ -131,6 +131,9 @@ ContactForm = connect(
     const nameValue = selector(state, 'name')
     const idValue = selector(state, 'socialNumber')
     const emailValue = selector(state, 'email')
+    console.log(nameValue)
+    console.log(idValue)
+    console.log(emailValue)
     return ({
       nameValue,
       idValue,

@@ -32,7 +32,7 @@ export default class Aside extends React.Component {
               </li>
 
               <li>
-                <Link key='3' to='/panel'>Add new Payment</Link>
+                <Link key='3' to='/panelCreatePayment'>Add new Payment</Link>
               </li>
               <li>
                 <Link key='4' to='/panel'>Update Client</Link>
