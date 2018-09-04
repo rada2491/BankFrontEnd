@@ -16,19 +16,19 @@ import Aside from './components/main/adminAside/'
 //Admin
 import PageRegisterUser from './pages/registerUser/'
 import PageCreateBankAccount from './pages/createbankAccount/'
-import PageCreatePayment from './pages/createPayment/'
+import PageCreateService from './pages/createService/'
 
 
 class Complement extends Component {
   render() {
 
-    if (sessionStorage.getItem("Authorization") === "Admin") {
+    if (sessionStorage.getItem("Authorization") !== "") {
       return (
         <div >
           <Header />
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-2 col-sm-2 col-xs-2">
+              <div className="col-md-2 col-sm-2 col-xs-2 aside-container">
                 <div>
                   <nav className='cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left' id='cbp-spmenu-s1'>
                     <Aside />
@@ -41,7 +41,7 @@ class Complement extends Component {
                     <Route path='/panel' component={Panel} />
                     <Route exact path="/panelRegisterUser" component={PageRegisterUser} />
                     <Route path="/panelCreateAccount" component={PageCreateBankAccount} />
-                    <Route path="/panelCreatePayment" component={PageCreatePayment} />
+                    <Route path="/panelCreateService" component={PageCreateService} />
                   </Switch>
                 </main>
               </div>
@@ -52,41 +52,14 @@ class Complement extends Component {
       );
     }
     else {
-      if (sessionStorage.getItem("Authorization") === 'Client') {
-        return (
-          <div>
-            <Header />
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col-md-2">
-                  <div>
-                    <div className='main'>
-                    </div>
-                    <nav className='cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left' id='cbp-spmenu-s1'>
-                      <Aside />
-                    </nav>
-                  </div>
-                </div>
-                <div className="col-md-10">
-                  <main>
-                    <Switch>
-                      <Route path='/panel' component={Panel} />
-                      <Route exact path="/panel1" component={() => <div>Cliente</div>} />
-                      <Route path="/panel2" component={lol} />
-                    </Switch>
-                  </main>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      }
+      return (
+        <div>
+        </div>
+      );
     }
-
-
-
   }
 }
+
 
 export default Complement;
 

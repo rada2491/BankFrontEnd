@@ -3,11 +3,12 @@ import * as a from '../actions/types'
 const API = 'https://localhost:44318/api/Account';
 const API2 = 'https://localhost:44318/api/admin'
 
-export default function addBankAccount(newObj) {
+export default function addBankAccount(newObj, lastPay) {
 
   return async dispatch => {
     dispatch({
-      type: a.UPDATE_ALL_USERS
+      type: a.UPDATE_ALL_USERS,
+      payload: lastPay
     })
 
     try {

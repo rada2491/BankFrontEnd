@@ -1,7 +1,15 @@
 /* General styles for all menus */
 .cbp-spmenu {
 	background: #9FBAA1;
-	position: absolute;
+  position: absolute;
+  margin-top: 50px;
+  height: 100%;
+  text-align: center;
+}
+
+.aside-position {
+  margin-top: 0px;
+  top: 0px !important;
 }
 
 .cbp-spmenu h3 {

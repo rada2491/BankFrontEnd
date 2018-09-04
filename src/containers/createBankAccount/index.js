@@ -17,15 +17,16 @@ class CreateBankAccountContainer extends React.Component {
     }
   }
 
-  componentWillMount() {
-    this.props.getAllUsers()
+  async componentWillMount() {
+    await this.props.getAllUsers()
+    
   }
 
   render() {
     const { AllUsers } = this.props
     return (
       <div>
-        <CreateBankAccount state={AllUsers} />
+        <CreateBankAccount allUs={AllUsers} />
       </div>
     )
   }

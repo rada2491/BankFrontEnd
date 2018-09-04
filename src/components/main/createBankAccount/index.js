@@ -57,22 +57,27 @@ class CreateBankAccount extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
+      users:  this.props.allUs,
       modal: false
     }
     this.openModal = this.openModal.bind(this);
     this.sendSubmit = this.sendSubmit.bind(this);
   }
 
-  async componentWillMount() {
-    this.setState({
-      users: this.props.state
+   componentWillMount() {
+     console.log(this.props.allUs)
+     this.setState({
+      users: this.props.allUs
     })
   }
 
+
+
   async componentDidUpdate(prevProps){
-    if(this.props.state !== prevProps.state){
-      users = prevProps.state;
+    if(this.props.allUs !== prevProps.allUs){
+      this.setState({
+        users: this.props.allUs
+      })
     }
   }
 
@@ -92,8 +97,8 @@ class CreateBankAccount extends React.Component {
       "accountOwner": userId, "accountNumber": accoNumber, "currency": accCurrency
       , "balance": accBalance.toString()
     }
-
-    this.props.addBankAccount(addAccount)
+    console.log(this.state.users)
+    this.props.addBankAccount(addAccount, this.state.users)
     this.setState({
       modal: !this.state.modal
     })
@@ -163,7 +168,7 @@ class CreateBankAccount extends React.Component {
 }
 
 const mapStateToProps = state => ({
-
+  
 })
 
 const mapDispatchToProps = {

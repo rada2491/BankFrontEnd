@@ -1,22 +1,18 @@
 import React from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import DropdownList from 'react-widgets/lib/DropdownList'
-import SelectList from 'react-widgets/lib/SelectList'
-import Multiselect from 'react-widgets/lib/Multiselect'
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { Field, reduxForm, formValueSelector, reset } from 'redux-form';
+import { push } from 'react-router-redux';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
 
 import 'react-widgets/dist/css/react-widgets.css'
 import './style.scss'
 
+const afterSubmit = (result, dispatch) =>
+  dispatch(reset('ordersTradesSearchForm'));
 
-
-const renderSelectList = ({ input, data }) =>
-  <SelectList {...input}
-    onBlur={() => input.onBlur()}
-    data={data} />
-
-class Payment extends React.Component {
+class ServiceForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,6 +21,7 @@ class Payment extends React.Component {
       activeTab: '1'
     };
   }
+
 
   toggle(tab) {
     if (this.state.activeTab !== tab) {
@@ -73,13 +70,14 @@ class Payment extends React.Component {
                             type="text" />
                         </div>
                         <div className='activeDrop'>
-                          <label>State</label>
+                          <label htmlFor="active">State</label>
                           <Field
                             name="active"
-                            component={DropdownList}
-                            data={['Active', 'Inactive']}
-                            valueField="value"
-                            textField="State" />
+                            component="select">
+                            <option></option>
+                            <option value={true}>Active</option>
+                            <option value={false}>Inactive</option>
+                          </Field>
                         </div>
                       </div>
                       <button type="submit" className="btn btn-primary" disabled={submitting}>Submit</button>
@@ -114,9 +112,21 @@ class Payment extends React.Component {
   }
 }
 
-Payment = reduxForm({
-  form: 'payment' // a unique name for this form
+ServiceForm = reduxForm({
+  form: 'service', // a unique name for this form
+})(ServiceForm);
 
-})(Payment);
+const selector = formValueSelector('service');
 
-export default Payment;
+ServiceForm = connect(
+  state => {
+    const nameValue = selector(state, 'name')
+    const desValue = selector(state, 'description')
+    return ({
+      nameValue,
+      desValue
+    })
+  }
+)(ServiceForm)
+
+export default ServiceForm;
