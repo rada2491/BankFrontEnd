@@ -18,6 +18,9 @@ import PageRegisterUser from './pages/registerUser/'
 import PageCreateBankAccount from './pages/createbankAccount/'
 import PageCreateService from './pages/createService/'
 
+//Client
+import PageAddFavAccount from './pages/addFavAccount'
+
 
 class Complement extends Component {
   render() {
@@ -42,6 +45,7 @@ class Complement extends Component {
                     <Route exact path="/panelRegisterUser" component={PageRegisterUser} />
                     <Route path="/panelCreateAccount" component={PageCreateBankAccount} />
                     <Route path="/panelCreateService" component={PageCreateService} />
+                    <Route path="/addFavAccount" component={PageAddFavAccount} />
                   </Switch>
                 </main>
               </div>

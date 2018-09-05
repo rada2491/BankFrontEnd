@@ -16,7 +16,11 @@ import Header from '../../header/'
 //import UserAside from '../userAside/'
 import AdminAside from '../adminAside/'
 
-class Example extends React.Component {
+import ClientHome from '../userHome/'
+
+import UserAccounts from '../../../redux/actionCreator/userAccounts'
+
+class UserPanel extends React.Component {
 
   constructor(props) {
     super(props);
@@ -25,8 +29,13 @@ class Example extends React.Component {
     }
   }
 
-  render() {
+  async componentWillMount() {
+    await this.props.UserAccounts();
+    console.log(this.props.Accounts)
+  }
 
+  render() {
+    const { Accounts } = this.props
     if (sessionStorage.getItem("Authorization") === "Admin") {
       return (
         <div>
@@ -37,9 +46,7 @@ class Example extends React.Component {
     else {
       if (sessionStorage.getItem("Authorization") === 'Client') {
         return (
-          <div>
-            Hola Cliente
-          </div>
+          <ClientHome state={Accounts} />
         );
       }
     }
@@ -54,4 +61,12 @@ const mapDispatchToProps = {
   //loginCredentials
 }*/
 
-export default Example;
+const mapStateToProps = state => ({
+  Accounts: state.accounts.Accounts
+})
+
+const mapDispatchToProps = {
+  UserAccounts
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserPanel);

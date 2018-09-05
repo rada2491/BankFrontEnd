@@ -6,10 +6,14 @@ import loginReducer from './loginCredentials'
 import createUserReducer from './User'
 import allUserReducer from './getAllUsers'
 import serviceReducer from './service'
+import accountReducer from './Accounts'
+import favAccountReducer from './FavAccount'
 
 export default combineReducers({
   user: loginReducer,
   createUser: createUserReducer,
+  faAccount: favAccountReducer,
+  accounts: accountReducer,
   getAllUsers: allUserReducer,
   createService: serviceReducer,
   router: routerReducer,

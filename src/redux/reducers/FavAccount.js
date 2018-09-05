@@ -1,29 +1,29 @@
 import * as a from '../actions/types'
 
 const INITIAL_STATE = {
-  AllUsers: [],
+  FavAccount: [],
   isLoaded: false
 }
 
-export default function AllUsersReducer(state = INITIAL_STATE, action) {
+export default function AllFavReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case a.ALL_USER_REQUEST:
+    case a.ALL_FAV_ACCOUNTS_REQUEST:
       return {
         ...state,
         isLoaded: false
       }
-    case a.ALL_USER_SUCCESS:
+    case a.ALL_FAV_ACCOUNTS_SUCCESS:
       return {
         ...state,
-        AllUsers: action.payload,
+        FavAccount: action.payload,
         isLoaded: true
       }
-    case a.UPDATE_ALL_USERS:
+    /*case a.UPDATE_ALL_USERS:
       return {
         ...state,
-        AllUsers: action.payload,
+        FavAccount: action.payload,
         isLoaded: true
-      }
+      }*/
     default:
       return state
   }

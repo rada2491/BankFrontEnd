@@ -54,7 +54,7 @@ export default class Aside extends React.Component {
                 <Link key='1' to='/panel'>Balance</Link>
               </li>
               <li className="active">
-                <Link key='2' to='/panel'>Add Favorite Account</Link>
+                <Link key='2' to='/addFavAccount'>Add Favorite Account</Link>
               </li>
 
               <li>
