@@ -22,7 +22,6 @@ export default function createService(serv) {
         })
         resultCode = response.status;
         const result = await response.json()
-        console.log(resultCode)
         dispatch({
           type: a.CREATE_SERVICE_SUCCESS,
           payload: result,

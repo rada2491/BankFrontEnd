@@ -2,7 +2,8 @@ import * as a from '../actions/types'
 
 const INITIAL_STATE = {
   FavAccount: [],
-  isLoaded: false
+  isLoaded: false,
+  NewFavAccount: []
 }
 
 export default function AllFavReducer(state = INITIAL_STATE, action) {
@@ -18,12 +19,17 @@ export default function AllFavReducer(state = INITIAL_STATE, action) {
         FavAccount: action.payload,
         isLoaded: true
       }
-    /*case a.UPDATE_ALL_USERS:
+    case a.CREATE_FAV_ACCOUNT:
+      return {
+        //...state,
+        isLoaded: false
+      }
+    case a.CREATE_FAV_ACCOUNT_SUCCESS:
       return {
         ...state,
-        FavAccount: action.payload,
+        code: action.code,
         isLoaded: true
-      }*/
+      }
     default:
       return state
   }

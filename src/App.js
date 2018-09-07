@@ -24,14 +24,21 @@ import Complement from './Complement'
 class App extends Component {
 
   componentDidMount() {
-    sessionStorage.setItem('login', false)
+    sessionStorage.setItem('login', 'false')
   }
 
   render() {
-    if (!sessionStorage.getItem('login')) {
-      return (
-        <Route exact path="/" component={Login} />
-      )
+    if (sessionStorage.getItem('login') === 'false') {
+      if (sessionStorage.getItem('Resp') === 'true') {
+        return (
+          <Complement />
+        )
+      }
+      else {
+        return (
+          <Route exact path="/" component={Login} />
+        )
+      }
     }
     else {
       return (

@@ -27,10 +27,6 @@ const selectRow = {
   hideSelectColumn: true,
   bgColor: '#9FBAA1',
   /*onSelect: (row, isSelect, rowIndex, e) => {
-    console.log(row.socialNumber);
-    console.log(isSelect);
-    console.log(rowIndex);
-    console.log(e);
   }*/
   
 };

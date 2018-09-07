@@ -33,8 +33,6 @@ class CreateServiceContainer extends React.Component {
   }
 
   handleSubmit = async (values) => {
-    console.log('entre aqui')
-    console.log(values)
     await this.props.addService(values)
     if(this.props.resCode === 200){
       this.setState({

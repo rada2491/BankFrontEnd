@@ -8,12 +8,14 @@ import allUserReducer from './getAllUsers'
 import serviceReducer from './service'
 import accountReducer from './Accounts'
 import favAccountReducer from './FavAccount'
+import accFoundReducer from './AccountFound'
 
 export default combineReducers({
   user: loginReducer,
   createUser: createUserReducer,
   faAccount: favAccountReducer,
   accounts: accountReducer,
+  accFound: accFoundReducer,
   getAllUsers: allUserReducer,
   createService: serviceReducer,
   router: routerReducer,

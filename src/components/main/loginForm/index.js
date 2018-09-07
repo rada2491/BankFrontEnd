@@ -33,21 +33,19 @@ class Example extends React.Component {
       "password": password
     }
 
-    console.log(logCre)
-
     this.props.loginCredentials(logCre)
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.user !== prevProps.user) {
-      console.log('entre', this.props.user)
       if (this.props.user !== undefined) {
         sessionStorage.setItem("token", this.props.user.token)
         sessionStorage.setItem("userId", this.props.user.id)
         sessionStorage.setItem("userName", this.props.user.userName)
         sessionStorage.setItem("userEmail", this.props.user.userEmail)
         sessionStorage.setItem("Authorization", this.props.user.authorization)
-        sessionStorage.setItem("login", true)
+        sessionStorage.setItem("login", 'true')
+        sessionStorage.setItem('Resp', sessionStorage.getItem('login'))
         this.setState({
           login: true
         })

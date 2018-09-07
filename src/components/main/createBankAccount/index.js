@@ -37,10 +37,6 @@ const selectRow = {
   hideSelectColumn: true,
   bgColor: '#9FBAA1',
   /*onSelect: (row, isSelect, rowIndex, e) => {
-    console.log(row.socialNumber);
-    console.log(isSelect);
-    console.log(rowIndex);
-    console.log(e);
   }*/
 
 };
@@ -65,7 +61,6 @@ class CreateBankAccount extends React.Component {
   }
 
    componentWillMount() {
-     console.log(this.props.allUs)
      this.setState({
       users: this.props.allUs
     })
@@ -90,14 +85,10 @@ class CreateBankAccount extends React.Component {
   async sendSubmit() {
     accCurrency = document.getElementById('currency').value;
     accBalance = document.getElementById('balance').value;
-
-    console.log(typeof accCurrency, typeof accBalance, typeof userId, typeof accoNumber)
-
     let addAccount = {
       "accountOwner": userId, "accountNumber": accoNumber, "currency": accCurrency
       , "balance": accBalance.toString()
     }
-    console.log(this.state.users)
     this.props.addBankAccount(addAccount, this.state.users)
     this.setState({
       modal: !this.state.modal

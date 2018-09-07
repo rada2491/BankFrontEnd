@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { Field, reduxForm, formValueSelector, reset } from 'redux-form';
 import validate from './validate';
 import { connect } from 'react-redux'
 import DropdownList from 'react-widgets/lib/DropdownList'
@@ -131,9 +131,6 @@ ContactForm = connect(
     const nameValue = selector(state, 'name')
     const idValue = selector(state, 'socialNumber')
     const emailValue = selector(state, 'email')
-    console.log(nameValue)
-    console.log(idValue)
-    console.log(emailValue)
     return ({
       nameValue,
       idValue,

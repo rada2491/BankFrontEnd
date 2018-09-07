@@ -31,7 +31,6 @@ class UserPanel extends React.Component {
 
   async componentWillMount() {
     await this.props.UserAccounts();
-    console.log(this.props.Accounts)
   }
 
   render() {

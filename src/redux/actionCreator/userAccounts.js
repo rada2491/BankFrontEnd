@@ -21,8 +21,6 @@ export default function UserAccounts() {
         })
         resultCode = response.status;
         const result = await response.json()
-        console.log(result)
-        console.log(resultCode)
         dispatch({
           type: a.ALL_ACCOUNTS_SUCCESS,
           payload: result,

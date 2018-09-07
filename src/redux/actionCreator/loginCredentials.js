@@ -19,7 +19,6 @@ export default function loginCredentials(credentials) {
       type: a.LOGIN_REQUEST
     })
     try {
-      //console.log('hola')
       const response = await fetch(API, {
         method: 'POST',
         body: JSON.stringify(credentials),
@@ -27,14 +26,12 @@ export default function loginCredentials(credentials) {
           'Content-Type': 'application/json'
         }
       })
-      //console.log('hola2')
       const result = await response.json()
 
       dispatch({
         type: a.LOGIN_SUCCESS,
         payload: result
       })
-      //console.log('result')
       /*let body = {
         token: body.token,
         autho: body.authorization,
@@ -43,7 +40,7 @@ export default function loginCredentials(credentials) {
         name: body.userName
       }*/
 
-      /*console.log(tran)
+      /*
       await fetch(API4, {
         method: 'POST',
         body: JSON.stringify(tran),
@@ -64,7 +61,6 @@ export default function loginCredentials(credentials) {
           headers: myHeaders
         })
         const result2 = await response2.json()
-        console.log(result2)
 
         dispatch({
           type: a.LOGIN_SUCCESS,
@@ -81,7 +77,6 @@ export default function loginCredentials(credentials) {
         headers: myHeaders
       })
       const result2 = await response2.json()
-      console.log(result2)
       dispatch({
         type: a.LOGIN_SUCCESS,
         payload: result2

@@ -1,32 +1,36 @@
 import * as a from '../actions/types'
 
-const API = 'https://localhost:44318/api/autho/create';
+const API = 'https://localhost:44318/api/FavAccount';
 
-export default function createUser(user) {
+let resultCode;
+
+
+export default function NewFavAccount(acc) {
   return async dispatch => {
     return new Promise(async function (resolve, reject) {
       dispatch({
-        type: a.CREATE_USER_REQUEST
+        type: a.CREATE_FAV_ACCOUNT_REQUEST
       })
       try {
         const response = await fetch(API, {
           method: 'POST',
-          body: JSON.stringify(user),
+          body: JSON.stringify(acc),
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + sessionStorage.getItem("token")
           }
         })
-
-        const result = await response.json()
+        resultCode = response.status;
+        //console.log(result)
         dispatch({
-          type: a.CREATE_USER_SUCCESS,
-          payload: result
+          type: a.CREATE_FAV_ACCOUNT_SUCCESS,
+          code: resultCode
         })
+
         resolve();
       } catch (error) {
         dispatch({
-          type: a.CREATE_USER_FAILURE,
+          type: a.CREATE_FAV_ACCOUNT_FAILURE,
           error: error
         })
         reject(error);

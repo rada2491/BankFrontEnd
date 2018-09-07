@@ -80,7 +80,7 @@ class ServiceForm extends React.Component {
                           </Field>
                         </div>
                       </div>
-                      <button type="submit" className="btn btn-primary" disabled={submitting}>Submit</button>
+                      <button type="submit" className="btn btn-primary submit-User" disabled={submitting}>Submit</button>
                     </form>
                   </Col>
                 </Row>
