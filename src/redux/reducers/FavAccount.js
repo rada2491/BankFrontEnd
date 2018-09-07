@@ -19,7 +19,7 @@ export default function AllFavReducer(state = INITIAL_STATE, action) {
         FavAccount: action.payload,
         isLoaded: true
       }
-    case a.CREATE_FAV_ACCOUNT:
+    case a.CREATE_FAV_ACCOUNT_REQUEST:
       return {
         //...state,
         isLoaded: false
@@ -28,6 +28,12 @@ export default function AllFavReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         code: action.code,
+        isLoaded: true
+      }
+      case a.UPDATE_FAV_ACCOUNTS:
+      return {
+        ...state,
+        FavAccount: action.payload,
         isLoaded: true
       }
     default:

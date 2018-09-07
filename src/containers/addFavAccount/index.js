@@ -48,23 +48,33 @@ class AddFavAccountContainer extends Component {
 
   async componentWillMount() {
     await this.props.AllFavAccount()
+    this.setState({
+      favAccount: this.props.favAccount
+    })
+  }
 
+  async componentDidUpdate(prevProps) {
+    if (this.props.favAccount !== prevProps.favAccount) {
+      this.setState({
+        favAccount: this.props.favAccount
+      })
+    }
   }
 
 
   render() {
-    const { favAccount } = this.props
+    const { favAccount } = this.state
+    const { Accounts } = this.props
     return (
       <div>
-        <AddFavAccount favAccount={favAccount} onSubmit={this.handleSubmit} />
+        <AddFavAccount allAc={Accounts} favAccount={favAccount} onSubmit={this.handleSubmit} />
         <Modal isOpen={this.state.modalG} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Service created</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Account added</ModalHeader>
           <ModalBody>
             <p>Favorite Account Added</p>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            <Button color="primary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
       </div>
@@ -74,7 +84,8 @@ class AddFavAccountContainer extends Component {
 
 const mapStateToProps = state => ({
   favAccount: state.faAccount.FavAccount || [],
-  resCode: state.faAccount.code
+  resCode: state.faAccount.code,
+  Accounts: state.accounts.Accounts
 })
 
 const mapDispatchToProps = (dispatch, allPro) => {

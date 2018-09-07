@@ -30,15 +30,11 @@ export default class Aside extends React.Component {
                 <li className="nava-item">
                   <Link key='2' to='/panelCreateAccount'>Create Account</Link>
                 </li>
-
                 <li className="nava-item">
                   <Link key='3' to='/panelCreateService'>Add new Payment</Link>
                 </li>
                 <li className="nava-item">
                   <Link key='4' to='/panel'>Update Client</Link>
-                </li>
-                <li className="nava-item">
-                  <Link key='5' to='/panel'>Delete account</Link>
                 </li>
               </ul>
             </section>
@@ -53,22 +49,14 @@ export default class Aside extends React.Component {
               <li>
                 <Link key='1' to='/panel'>Balance</Link>
               </li>
-              <li className="active">
-                <Link key='2' to='/addFavAccount'>Add Favorite Account</Link>
+              <li>
+                <Link key='2' to='/addFavAccount'>Favorite Account / Transactions</Link>
               </li>
-
               <li>
                 <Link key='3' to='/panel'>Payments</Link>
               </li>
               <li>
-                <Link key='4' to='/panel'>Transactions</Link>
-              </li>
-              <li>
-                <Link key='5' to='/panel'>Transaction History</Link>
-              </li>
-              <li>
-                <Link to='/panel1'>lala</Link>
-                <Link to='/panel2'>lala</Link>
+                <Link key='4' to='/panel'>Transaction History</Link>
               </li>
             </ul>
           </section>

@@ -1,5 +1,11 @@
 import React from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import {
+  TabContent, TabPane, Nav, NavItem, NavLink,
+  Card, Button, CardTitle, CardText, Row, Col,
+  Form, FormGroup, Label, Modal, Input,
+  ModalHeader, ModalBody, ModalFooter, Collapse,
+  Dropdown, DropdownToggle, DropdownMenu, DropdownItem
+} from 'reactstrap';
 import DropdownList from 'react-widgets/lib/DropdownList'
 import { Field, reduxForm, formValueSelector, reset } from 'redux-form';
 import { push } from 'react-router-redux';
@@ -12,16 +18,35 @@ import './style.scss'
 const afterSubmit = (result, dispatch) =>
   dispatch(reset('ordersTradesSearchForm'));
 
+  const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+    <div>
+      <label>{label}</label>
+      <div>
+        <input {...input} placeholder={label} type={type} />
+        {touched &&
+          ((error && <span>{error}</span>) ||
+            (warning && <span>{warning}</span>))}
+      </div>
+    </div>
+  )
 class ServiceForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      activeTab: '1'
+      activeTab: '1',
+      payModal: false
     };
+
+    this.AddPModal = this.AddPModal.bind(this)
   }
 
+  AddPModal() {
+    this.setState({
+      payModal: !this.state.payModal
+    })
+  }
 
   toggle(tab) {
     if (this.state.activeTab !== tab) {
@@ -31,7 +56,7 @@ class ServiceForm extends React.Component {
     }
   }
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props;
+    const { handleSubmit, pristine, reset, submitting, mySubmit } = this.props;
     return (
       <div className='container-fluid RB-register'>
         <div className="row">
@@ -87,20 +112,52 @@ class ServiceForm extends React.Component {
               </TabPane>
               <TabPane tabId="2">
                 <Row>
-                  <Col sm="6">
-                    <Card body>
-                      <CardTitle>Special Title Treatment</CardTitle>
-                      <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                      <Button>Go somewhere</Button>
-                    </Card>
-                  </Col>
-                  <Col sm="6">
-                    <Card body>
-                      <CardTitle>Special Title Treatment</CardTitle>
-                      <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                      <Button>Go somewhere</Button>
-                    </Card>
-                  </Col>
+                  {
+                    this.props.allSer.map(allS => {
+                      return (
+                        <Col sm="6" key={allS.id}>
+                          <Card body id={allS.id}>
+                            <CardTitle>{allS.name}</CardTitle>
+                            <CardText>{allS.description}</CardText>
+                            <Button onClick={this.AddPModal}>Go somewhere</Button>
+                          </Card>
+                          <Modal isOpen={this.state.payModal} toggle={this.AddPModal} className={this.props.className}>
+                            <ModalHeader toggle={this.AddPModal}>Assign Payment</ModalHeader>
+                            <ModalBody>
+                              <form onSubmit={mySubmit}>
+                                <div className="row">
+                                  <div className="input-group input-group-icon RB-register__container">
+                                    <label htmlFor="text">Social Number</label>
+                                    <Field className='input'
+                                      name="accountNumber"
+                                      component={renderField}
+                                      type="text" />
+                                  </div>
+                                  <div className="input-group input-group-icon RB-register__container">
+                                    <label htmlFor="text">User Social Number</label>
+                                    <Field name="socialNumber"
+                                      component={renderField}
+                                      type="text" />
+                                  </div>
+                                  <div className="input-group input-group-icon RB-register__container">
+                                    <label htmlFor="name">User Name</label>
+                                    <Field name="accountOwner"
+                                      component={renderField}
+                                      type="text" />
+                                  </div>
+                                  <button type="button" className="btn btn-primary" onClick={this.load}>Search Client</button>
+                                  <button type="submit" className="btn btn-primary" disabled={submitting}>Submit</button>
+                                </div>
+                              </form>
+                            </ModalBody>
+                            <ModalFooter>
+                              <Button color="secondary" onClick={this.AddPModal}>Close</Button>
+                            </ModalFooter>
+                          </Modal>
+                        </Col>
+                      )
+                    })
+                  }
                 </Row>
               </TabPane>
             </TabContent>
