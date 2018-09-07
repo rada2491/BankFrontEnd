@@ -23,8 +23,8 @@ import Complement from './Complement'
 
 class App extends Component {
 
-  componentDidMount() {
-    sessionStorage.setItem('login', 'false')
+  async componentWillMount() {
+    await sessionStorage.setItem('login', 'false')
   }
 
   render() {

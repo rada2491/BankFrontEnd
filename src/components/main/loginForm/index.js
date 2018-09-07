@@ -54,8 +54,8 @@ class Example extends React.Component {
   }
 
   render() {
-    const { user } = this.props
-    if (this.state.login) {
+    const { login } = this.state
+    if (login) {
       return (
         <Redirect to={'/panel'} />
       );
