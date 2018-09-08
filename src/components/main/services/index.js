@@ -2,18 +2,17 @@ import React from 'react';
 import {
   TabContent, TabPane, Nav, NavItem, NavLink,
   Card, Button, CardTitle, CardText, Row, Col,
-  Form, FormGroup, Label, Modal, Input,
-  ModalHeader, ModalBody, ModalFooter, Collapse,
-  Dropdown, DropdownToggle, DropdownMenu, DropdownItem
+  Modal, ModalHeader, ModalBody, ModalFooter
 } from 'reactstrap';
-import DropdownList from 'react-widgets/lib/DropdownList'
-import { Field, reduxForm, formValueSelector, reset } from 'redux-form';
-import { push } from 'react-router-redux';
+import { Field, reduxForm, formValueSelector, reset, change } from 'redux-form';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
+import usFound from '../../../redux/actionCreator/usFound'
 
 import 'react-widgets/dist/css/react-widgets.css'
 import './style.scss'
+
+let usNumber
 
 const afterSubmit = (result, dispatch) =>
   dispatch(reset('ordersTradesSearchForm'));
@@ -40,6 +39,7 @@ class ServiceForm extends React.Component {
     };
 
     this.AddPModal = this.AddPModal.bind(this)
+    this.load = this.load.bind(this)
   }
 
   AddPModal() {
@@ -54,6 +54,16 @@ class ServiceForm extends React.Component {
         activeTab: tab
       });
     }
+  }
+
+  async load() {
+    usNumber = this.props.userSocial
+    let num = {
+      'socialNumber': usNumber
+    }
+    await this.props.usFound(num)
+
+    this.props.found(this.props.user.name)
   }
   render() {
     const { handleSubmit, pristine, reset, submitting, mySubmit } = this.props;
@@ -129,19 +139,13 @@ class ServiceForm extends React.Component {
                                   <div className="input-group input-group-icon RB-register__container">
                                     <label htmlFor="text">Social Number</label>
                                     <Field className='input'
-                                      name="accountNumber"
-                                      component={renderField}
-                                      type="text" />
-                                  </div>
-                                  <div className="input-group input-group-icon RB-register__container">
-                                    <label htmlFor="text">User Social Number</label>
-                                    <Field name="socialNumber"
+                                      name="socialNumber"
                                       component={renderField}
                                       type="text" />
                                   </div>
                                   <div className="input-group input-group-icon RB-register__container">
                                     <label htmlFor="name">User Name</label>
-                                    <Field name="accountOwner"
+                                    <Field name="name"
                                       component={renderField}
                                       type="text" />
                                   </div>
@@ -169,6 +173,23 @@ class ServiceForm extends React.Component {
   }
 }
 
+
+
+const mapStateToProps = state => ({
+  user: state.userFound.user
+})
+
+const mapDispatchToProps = (dispatch, allPro) => {
+  return {
+    usFound: async (values) => {
+      await dispatch(usFound(values))
+    },
+    found: async (name) => {
+      await dispatch(change('service', 'name', name))
+    }
+  }
+
+}
 ServiceForm = reduxForm({
   form: 'service', // a unique name for this form
 })(ServiceForm);
@@ -179,11 +200,14 @@ ServiceForm = connect(
   state => {
     const nameValue = selector(state, 'name')
     const desValue = selector(state, 'description')
+    const userSocial = selector(state, 'socialNumber')
     return ({
       nameValue,
-      desValue
+      desValue,
+      userSocial
     })
   }
 )(ServiceForm)
 
-export default ServiceForm;
+
+export default connect(mapStateToProps, mapDispatchToProps)(ServiceForm);

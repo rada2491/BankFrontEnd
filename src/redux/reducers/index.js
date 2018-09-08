@@ -11,6 +11,7 @@ import favAccountReducer from './FavAccount'
 import accFoundReducer from './AccountFound'
 import transactionReducer from './Transaction'
 import paymentReducer from './Payment'
+import userFoundReducer from './UserFound'
 
 export default combineReducers({
   user: loginReducer,
@@ -19,6 +20,7 @@ export default combineReducers({
   transaction: transactionReducer,
   accounts: accountReducer,
   accFound: accFoundReducer,
+  userFound: userFoundReducer,
   payment: paymentReducer,
   getAllUsers: allUserReducer,
   service: serviceReducer,
