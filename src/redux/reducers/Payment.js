@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   payment: [],
   userFound: [],
   isLoaded: false,
-  code: 0
+  code: 0,
+  userPayment: []
 }
 
 export default function PaymentReducer(state = INITIAL_STATE, action) {
@@ -21,6 +22,17 @@ export default function PaymentReducer(state = INITIAL_STATE, action) {
         code: action.code,
         isLoaded: true
       }
+      case a.ALL_USER_PAYMENTS_REQUEST:
+      return {
+        //...state,
+        isLoaded: false
+      }
+    case a.ALL_USER_PAYMENTS:
+    return {
+      ...state,
+      userPayment: action.payload,
+      isLoaded: true
+    }
     default:
       return state
   }

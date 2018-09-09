@@ -9,7 +9,7 @@ import './style.scss'
 
 let namSele, idSele, emSele;
 
-const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
+const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div>
     <label>{label}</label>
     <div>
@@ -52,50 +52,55 @@ class ContactForm extends Component {
             <form onSubmit={handleSubmit}>
               <div className="row">
                 <div className="input-group input-group-icon RB-register__container">
-                  <label htmlFor="firstName">User Name</label>
-                  <Field className='input' 
-                  name="name" 
-                  component={renderField}
-                  type="text"/>
+                  <label htmlFor="firstName" className="textformat">User Name</label>
+                  <Field className='input'
+                    name="name"
+                    component={renderField}
+                    type="text" />
                 </div>
                 <div className="input-group input-group-icon RB-register__container">
-                  <label htmlFor="text">User Social Number</label>
-                  <Field name="socialNumber" 
-                  component={renderField}
-                  type="text" />
+                  <label htmlFor="text" className="textformat">User Social Number</label>
+                  <Field name="socialNumber"
+                    component={renderField}
+                    type="text" />
                 </div>
                 <div className="input-group input-group-icon RB-register__container">
-                  <label htmlFor="Phone">User Cell Phone</label>
-                  <Field name="PhoneNumber" 
-                  component={renderField}
-                  type="Phone" />
+                  <label htmlFor="Phone" className="textformat">User Cell Phone</label>
+                  <Field name="PhoneNumber"
+                    component={renderField}
+                    type="Phone" />
                 </div>
                 <div className="input-group input-group-icon RB-register__container">
-                  <label htmlFor="email">User Email</label>
-                  <Field name="email" 
-                  component={renderField}
-                  type="email"/>
+                  <label htmlFor="email" className="textformat">User Email</label>
+                  <Field name="email"
+                    component={renderField}
+                    type="email" />
                 </div>
                 <div className="input-group input-group-icon RB-register__container">
-                  <label htmlFor="Password">User Password</label>
-                  <Field name="Password" 
-                  component={renderField}
-                  type="Password" />
+                  <label htmlFor="Password" className="textformat">User Password</label>
+                  <Field name="Password"
+                    component={renderField}
+                    type="Password" />
                 </div>
                 <div className="input-group input-group-icon RB-register__container">
-                  <label htmlFor="Password">Confirm Password</label>
-                  <Field name="confirmPassword" 
-                  component={renderField}
-                  type="Password" />
+                  <label htmlFor="Password" className="textformat">Confirm Password</label>
+                  <Field name="confirmPassword"
+                    component={renderField}
+                    type="Password" />
                 </div>
-                <div className="input-group input-group-icon RB-register__container">
-                  <label htmlFor="UserType">User Type</label>
-                  <Field name="UserType" 
-                  component={renderField}
-                  type="text" />
+                <div className='activeDrop3'>
+                  <label htmlFor="userType" className="textformat">User Type</label>
+                  <Field className="borde"
+                    name="userType"
+                    component="select">
+                    <option></option>
+                    <option value='Admin'>Administrator</option>
+                    <option value='Client'>Client</option>
+                  </Field>
                 </div>
-                <button type="submit" className="btn btn-primary" disabled={submitting}>Submit</button>
-                <Button color="danger" className="btn btn-primary" onClick={this.toggle}>Create QR Code</Button>
+                <div className='col-md-8'>
+                  <button type="submit" className="btn btn-primary" disabled={submitting}>Submit</button>
+                </div>
               </div>
             </form>
           </div>

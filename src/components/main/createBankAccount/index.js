@@ -53,23 +53,23 @@ class CreateBankAccount extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users:  this.props.allUs,
+      users: this.props.allUs,
       modal: false
     }
     this.openModal = this.openModal.bind(this);
     this.sendSubmit = this.sendSubmit.bind(this);
   }
 
-   componentWillMount() {
-     this.setState({
+  componentWillMount() {
+    this.setState({
       users: this.props.allUs
     })
   }
 
 
 
-  async componentDidUpdate(prevProps){
-    if(this.props.allUs !== prevProps.allUs){
+  async componentDidUpdate(prevProps) {
+    if (this.props.allUs !== prevProps.allUs) {
       this.setState({
         users: this.props.allUs
       })
@@ -136,9 +136,12 @@ class CreateBankAccount extends React.Component {
                 </Col>
               </FormGroup>
               <FormGroup row>
-                <Label for="newContent" md={4}>Currency</Label>
+                <Label for="exampleSelectMulti" md={4}>Currency</Label>
                 <Col md={10}>
-                  <Input type="text" name="title" id="currency" placeholder="Currency" />
+                  <Input type="select" name="selectMulti" id="currency" placeholder="Currency">
+                    <option value='Dollars'>Dollars</option>
+                    <option value='Colons'>Colons</option>
+                  </Input>
                 </Col>
               </FormGroup>
               <FormGroup row>
@@ -160,7 +163,7 @@ class CreateBankAccount extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  
+
 })
 
 const mapDispatchToProps = {

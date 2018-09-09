@@ -52,7 +52,7 @@ export default class Aside extends React.Component {
               <Link key='2' to='/addFavAccount'>Favorite Account / Transactions</Link>
             </li>
             <li className="nava-item cbp-spmenu-vertical">
-              <Link key='3' to='/panel'>Payments</Link>
+              <Link key='3' to='/userPayment'>Payments</Link>
             </li>
             <li className="nava-item cbp-spmenu-vertical">
               <Link key='4' to='/panel'>Transaction History</Link>
