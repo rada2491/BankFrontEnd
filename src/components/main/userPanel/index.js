@@ -38,8 +38,9 @@ class UserPanel extends React.Component {
     if (sessionStorage.getItem("Authorization") === "Admin") {
       return (
         <div>
-          Hola admi
-          </div>
+          <p>“Success consists of going from failure to failure without loss of enthusiasm.”–Winston Churchill</p>
+          <img src="https://res.cloudinary.com/radacloud/image/upload/v1536014090/React-Bank/Bank.png" alt="" />
+        </div>
       );
     }
     else {
