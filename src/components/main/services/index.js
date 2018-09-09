@@ -17,17 +17,17 @@ let usNumber
 const afterSubmit = (result, dispatch) =>
   dispatch(reset('ordersTradesSearchForm'));
 
-  const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+  <div>
+    <label>{label}</label>
     <div>
-      <label>{label}</label>
-      <div>
-        <input {...input} placeholder={label} type={type} />
-        {touched &&
-          ((error && <span>{error}</span>) ||
-            (warning && <span>{warning}</span>))}
-      </div>
+      <input {...input} placeholder={label} type={type} />
+      {touched &&
+        ((error && <span>{error}</span>) ||
+          (warning && <span>{warning}</span>))}
     </div>
-  )
+  </div>
+)
 class ServiceForm extends React.Component {
   constructor(props) {
     super(props);
@@ -35,7 +35,8 @@ class ServiceForm extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       activeTab: '1',
-      payModal: false
+      payModal: false,
+      servic: this.props.allSer
     };
 
     this.AddPModal = this.AddPModal.bind(this)
@@ -47,6 +48,23 @@ class ServiceForm extends React.Component {
       payModal: !this.state.payModal
     })
   }
+
+  componentWillMount() {
+    console.log(this.props.allSer)
+    /*this.setState({
+      servic: this.props.allSer
+    })*/
+  }
+
+  /*componentDidUpdate(prevProps) {
+    console.log('fuck')
+    if(this.props.allSer !== prevProps.allSer){
+      console.log('fuck2')
+      this.setState({
+        servic: this.props.allSer 
+      })
+    }
+  }*/
 
   toggle(tab) {
     if (this.state.activeTab !== tab) {
@@ -67,18 +85,19 @@ class ServiceForm extends React.Component {
   }
   render() {
     const { handleSubmit, pristine, reset, submitting, mySubmit } = this.props;
+    const { servic } = this.state
     return (
       <div className='container-fluid RB-register'>
         <div className="row">
-          <div className="col-md-8 payment-container">
+          <div className="col-md-12 payment-container">
             <Nav tabs>
-              <NavItem>
+              <NavItem className="textformat">
                 <NavLink
                   className={classnames({ active: this.state.activeTab === '1' })}
                   onClick={() => { this.toggle('1'); }}>Add Service
                 </NavLink>
               </NavItem>
-              <NavItem>
+              <NavItem className="textformat">
                 <NavLink
                   className={classnames({ active: this.state.activeTab === '2' })}
                   onClick={() => { this.toggle('2'); }}>Current Services
@@ -90,23 +109,23 @@ class ServiceForm extends React.Component {
                 <Row>
                   <Col sm="8">
                     <form onSubmit={handleSubmit}>
-                      <div className="row payment-form">
-                        <div className="input-group input-group-icon RB-register__container">
-                          <label htmlFor="firstName">Service</label>
-                          <Field className='input'
+                      <div className="row payment-form ">
+                        <div className="input-group input-group-icon RB-register__container ">
+                          <label htmlFor="firstName" className=" textformat">Service</label>
+                          <Field className='input form-control-lg borde'
                             name="name"
                             component='input'
                             type="text" />
                         </div>
                         <div className="input-group input-group-icon RB-register__container">
-                          <label htmlFor="text">Service Description</label>
-                          <Field name="description"
+                          <label htmlFor="text" className="textformat">Service Description</label>
+                          <Field className="input form-control-lg borde" name="description"
                             component='input'
                             type="text" />
                         </div>
                         <div className='activeDrop'>
-                          <label htmlFor="active">State</label>
-                          <Field
+                          <label htmlFor="exampleFormControlSelect1" className="textformat">State</label>
+                          <Field className="borde"
                             name="active"
                             component="select">
                             <option></option>
@@ -115,7 +134,7 @@ class ServiceForm extends React.Component {
                           </Field>
                         </div>
                       </div>
-                      <button type="submit" className="btn btn-primary submit-User" disabled={submitting}>Submit</button>
+                      <button type="submit" className="btn btn-primary submit-User textFormat" disabled={submitting}>Submit</button>
                     </form>
                   </Col>
                 </Row>
@@ -123,9 +142,9 @@ class ServiceForm extends React.Component {
               <TabPane tabId="2">
                 <Row>
                   {
-                    this.props.allSer.map(allS => {
+                    servic.map(allS => {
                       return (
-                        <Col sm="6" key={allS.id}>
+                        <Col sm="4" key={allS.id}>
                           <Card body id={allS.id}>
                             <CardTitle>{allS.name}</CardTitle>
                             <CardText>{allS.description}</CardText>
@@ -137,14 +156,14 @@ class ServiceForm extends React.Component {
                               <form onSubmit={mySubmit}>
                                 <div className="row">
                                   <div className="input-group input-group-icon RB-register__container">
-                                    <label htmlFor="text">Social Number</label>
+                                    <label htmlFor="text" className="textformat">Social Number</label>
                                     <Field className='input'
                                       name="socialNumber"
                                       component={renderField}
                                       type="text" />
                                   </div>
                                   <div className="input-group input-group-icon RB-register__container">
-                                    <label htmlFor="name">User Name</label>
+                                    <label htmlFor="name" className="textformat">User Name</label>
                                     <Field name="name"
                                       component={renderField}
                                       type="text" />

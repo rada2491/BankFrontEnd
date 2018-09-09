@@ -2,6 +2,7 @@ import * as a from '../actions/types'
 
 const API = 'https://localhost:44318/api/services';
 
+
 let resultCode;
 
 
@@ -27,7 +28,28 @@ export default function createService(serv) {
           payload: result,
           code: resultCode
         })
-
+        console.log('aqui ando madafaka')
+        try {
+          console.log('ahora ando aca')
+          const response = await fetch(API, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+            }
+          })
+          const result = await response.json()
+          console.log(result)
+          dispatch({
+            type: a.UPDATE_SERVICES_SUCCESS,
+            payload: result
+          })
+        } catch (error) {
+          dispatch({
+            type: a.UPDATE_SERVICES_FAILURE,
+            error: error
+          })
+        }
         resolve();
       } catch (error) {
         dispatch({

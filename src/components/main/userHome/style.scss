@@ -1,6 +1,21 @@
 .RB-user-Account {
   &__header{
-    border-bottom: 2px solid #000
   }
+}
 
+.fondo{
+  background: #808080;
+  text-align: center;
+}
+
+.texto{
+  text-align: center;
+}
+
+.espacio{
+  padding-bottom: 20px;
+  &__extra{
+    border-bottom: 1px solid black;
+    margin-bottom: 15px;
+  }
 }

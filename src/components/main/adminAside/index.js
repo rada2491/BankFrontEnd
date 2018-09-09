@@ -21,10 +21,10 @@ export default class Aside extends React.Component {
   render() {
     if (sessionStorage.getItem('Authorization') === 'Admin') {
       return (
-          <aside className="left-side sidebar-offcanvas cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left aside-position textformat">
-          <section className="sidebar">
+          <aside className="left-side sidebar-offcanvas cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left aside-position textformat ">
+          <section className="sidebar ">
               <ul className="sidebar-menu">
-                <li className="nava-item">
+                <li className="nava-item ">
                   <Link key='1' to='/panelRegisterUser'>Create User</Link>
                 </li>
                 <li className="nava-item">
@@ -46,16 +46,16 @@ export default class Aside extends React.Component {
         <aside className="left-side sidebar-offcanvas cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left aside-position textformat">
           <section className="sidebar">
             <ul className="sidebar-menu">
-              <li>
+              <li className="nava-item ">
                 <Link key='1' to='/panel'>Balance</Link>
               </li>
-              <li>
+              <li className="nava-item ">
                 <Link key='2' to='/addFavAccount'>Favorite Account / Transactions</Link>
               </li>
-              <li>
+              <li className="nava-item ">
                 <Link key='3' to='/panel'>Payments</Link>
               </li>
-              <li>
+              <li className="nava-item ">
                 <Link key='4' to='/panel'>Transaction History</Link>
               </li>
             </ul>
@@ -68,25 +68,20 @@ export default class Aside extends React.Component {
 
 /*
 <aside className="left-side sidebar-offcanvas cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left aside-position textformat">
-          <label htmlFor="nav-trigger"></label>
-            <section className="sidebar">
-              <ul className="sidebar-menu">
-                <li>
-                  <Link key='1' to='/panelRegisterUser'>Create User</Link>
-                </li>
-                <li className="active">
-                  <Link key='2' to='/panelCreateAccount'>Create Account</Link>
-                </li>
-
-                <li>
-                  <Link key='3' to='/panelCreateService'>Add new Payment</Link>
-                </li>
-                <li>
-                  <Link key='4' to='/panel'>Update Client</Link>
-                </li>
-                <li>
-                  <Link key='5' to='/panel'>Delete account</Link>
-                </li>
-              </ul>
-            </section>
-          </aside> */
+          <section className="sidebar">
+            <ul className="sidebar-menu">
+              <li className="nava-item ">
+                <Link key='1' to='/panel'>Balance</Link>
+              </li>
+              <li className="nava-item ">
+                <Link key='2' to='/addFavAccount'>Favorite Account / Transactions</Link>
+              </li>
+              <li className="nava-item ">
+                <Link key='3' to='/panel'>Payments</Link>
+              </li>
+              <li className="nava-item ">
+                <Link key='4' to='/panel'>Transaction History</Link>
+              </li>
+            </ul>
+          </section>
+        </aside> */

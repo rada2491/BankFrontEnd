@@ -24,10 +24,16 @@ export default function createUserReducer(state = INITIAL_STATE, action) {
       }
     case a.ALL_SERVICES_REQUEST:
     return {
-      ...state,
+      //...state,
       isLoaded: false
     }
     case a.ALL_SERVICES_SUCCESS:
+    return {
+      ...state,
+      AllSer: action.payload,
+      isLoaded: true
+    }
+    case a.UPDATE_SERVICES_SUCCESS:
     return {
       ...state,
       AllSer: action.payload,

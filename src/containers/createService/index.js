@@ -19,13 +19,28 @@ class CreateServiceContainer extends React.Component {
       acti: "Active",
       deAct: "Inactive",
       services: [],
-      resCode: 0
+      resCode: 0,
+      allServicesDB: [],
+      allSer: []
     }
     this.toggle = this.toggle.bind(this);
   }
 
-  componentWillMount() {
-    this.props.allServices()
+  async componentWillMount() {
+    console.log('pidiendo servicios')
+    await this.props.allServices()
+    console.log('pase de una puto')
+    this.setState({
+      allSer: this.props.allSer
+    })
+  }
+
+  componentDidMount() {
+    console.log('in the did')
+    console.log(this.state.allSer)
+    this.setState({
+      allSer: this.props.allSer
+    })
   }
 
   toggle() {
@@ -36,14 +51,27 @@ class CreateServiceContainer extends React.Component {
 
   handleSubmit = async (values) => {
     await this.props.addService(values)
-    if(this.props.resCode === 200){
+    console.log('antes del nuevo array')
+    console.log(this.props.allSer)
+    //await this.props.allServices()
+    if (this.props.resCode === 200) {
       this.setState({
         modalG: true,
-        services: this.props.services
+        services: this.props.services, //this is the new service
+        //allServicesDB: this.props.allSer 
       })
     } else {
       this.setState({
         modalB: true
+      })
+    }
+  }
+
+  componentDidUpdate(preProps) {
+    ('entre a upgradear las nalgas')
+    if (this.props.allSer !== preProps.allSer) {
+      this.setState({
+        allServicesDB: this.props.allSer
       })
     }
   }
@@ -54,9 +82,13 @@ class CreateServiceContainer extends React.Component {
 
   render() {
     const { services } = this.props
+    const { allSer } = this.props
+    //const { allSer } = this.state
+    console.log('aqui')
+    console.log(allSer)
     return (
       <div>
-        <Service onSubmit={this.handleSubmit} mySubmit={this.mySubmit} allSer={this.props.allSer}/>
+        <Service onSubmit={this.handleSubmit} mySubmit={this.mySubmit} allSer={allSer} />
         <Modal isOpen={this.state.modalG} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Service created</ModalHeader>
           <ModalBody>
@@ -85,16 +117,18 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, allPro) => {
   return {
-  addService: async (values) => {
-    await dispatch(addService(values))
-  },
-  allServices: async () => {
-    await dispatch(allServices())
-  },
-  addPayment: async (values) => {
-    await dispatch(addPayment(values))
+
+    allServices: async () => {
+      await dispatch(allServices())
+    },
+    addService: async (values) => {
+      await dispatch(addService(values))
+    },
+
+    addPayment: async (values) => {
+      await dispatch(addPayment(values))
+    }
   }
-}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateServiceContainer);

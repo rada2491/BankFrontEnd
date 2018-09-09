@@ -100,10 +100,11 @@ class CreateBankAccount extends React.Component {
     return (
       <div className='container-fluid RB-register'>
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-12 table-responsive-md table-responsive-sm table-responsive-lg">
             <BootstrapTable
               id='mytable'
               classes="table-striped table-content"
+              headerClasses='thead-light'
               bordered={bord}
               hover={hover}
               bootstrap4={boot}
