@@ -28,9 +28,7 @@ export default function createService(serv) {
           payload: result,
           code: resultCode
         })
-        console.log('aqui ando madafaka')
         try {
-          console.log('ahora ando aca')
           const response = await fetch(API, {
             method: 'GET',
             headers: {
@@ -39,7 +37,6 @@ export default function createService(serv) {
             }
           })
           const result = await response.json()
-          console.log(result)
           dispatch({
             type: a.UPDATE_SERVICES_SUCCESS,
             payload: result

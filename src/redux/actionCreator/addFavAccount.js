@@ -21,7 +21,6 @@ export default function NewFavAccount(acc) {
           }
         })
         resultCode = response.status;
-        //console.log(result)
         dispatch({
           type: a.CREATE_FAV_ACCOUNT_SUCCESS,
           code: resultCode

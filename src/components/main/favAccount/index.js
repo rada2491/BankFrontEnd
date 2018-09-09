@@ -151,7 +151,6 @@ class FavoriteAccountModule extends Component {
     let AmountS = document.getElementById('amount').value;
     amoS = AmountS
     let AmountF = parseFloat(AmountS);
-    console.log(AmountF)
     let transaction = {
       "origin": originAccount,
       "destiny": destyAccount,
@@ -164,7 +163,6 @@ class FavoriteAccountModule extends Component {
         tranSuccess: !this.state.tranSuccess
       })
     }
-    console.log(this.props.transaction)
     if(this.props.resCode === 400){
       this.setState({
         tranFail: !this.state.tranFail
@@ -180,7 +178,6 @@ class FavoriteAccountModule extends Component {
     const { handleSubmit, pristine, reset, submitting } = this.props;
     const { accF } = this.props
     const { allAc } = this.props
-    console.log(allAc)
     return (
       <div className='RB-FA-Container'>
         <Button className='Fav-Button' color="info" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Favorite Accounts</Button>

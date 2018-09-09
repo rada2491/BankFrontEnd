@@ -5,7 +5,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import addService from '../../redux/actionCreator/addService'
-import addPayment from '../../redux/actionCreator/addPayment'
+
 import allServices from '../../redux/actionCreator/allServices'
 import Service from '../../components/main/services/'
 
@@ -27,17 +27,13 @@ class CreateServiceContainer extends React.Component {
   }
 
   async componentWillMount() {
-    console.log('pidiendo servicios')
     await this.props.allServices()
-    console.log('pase de una puto')
     this.setState({
       allSer: this.props.allSer
     })
   }
 
   componentDidMount() {
-    console.log('in the did')
-    console.log(this.state.allSer)
     this.setState({
       allSer: this.props.allSer
     })
@@ -51,8 +47,6 @@ class CreateServiceContainer extends React.Component {
 
   handleSubmit = async (values) => {
     await this.props.addService(values)
-    console.log('antes del nuevo array')
-    console.log(this.props.allSer)
     //await this.props.allServices()
     if (this.props.resCode === 200) {
       this.setState({
@@ -76,20 +70,15 @@ class CreateServiceContainer extends React.Component {
     }
   }
 
-  mySubmit = async (values) => {
-    console.log(values)
-    await this.props.addPayment(values)
-  }
+  
 
   render() {
     const { services } = this.props
     const { allSer } = this.props
     //const { allSer } = this.state
-    console.log('aqui')
-    console.log(allSer)
     return (
       <div>
-        <Service onSubmit={this.handleSubmit} mySubmit={this.mySubmit} allSer={allSer} />
+        <Service onSubmit={this.handleSubmit} allSer={allSer} />
         <Modal isOpen={this.state.modalG} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Service created</ModalHeader>
           <ModalBody>

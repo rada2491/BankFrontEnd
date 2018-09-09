@@ -6,14 +6,12 @@ let resultCode;
 
 
 export default function usFound(acc) {
-  console.log(acc)
   return async dispatch => {
     return new Promise(async function (resolve, reject) {
       dispatch({
         type: a.SEARCH_USER_REQUEST
       })
       try {
-        console.log(acc)
         const response = await fetch(API, {
           method: 'POST',
           body: JSON.stringify(acc),

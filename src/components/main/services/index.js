@@ -7,27 +7,19 @@ import {
 import { Field, reduxForm, formValueSelector, reset, change } from 'redux-form';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import usFound from '../../../redux/actionCreator/usFound'
+import addPayment from '../../../redux/actionCreator/addPayment'
+import PaymentForm from '../payment/'
 
 import 'react-widgets/dist/css/react-widgets.css'
 import './style.scss'
 
-let usNumber
+
 
 const afterSubmit = (result, dispatch) =>
   dispatch(reset('ordersTradesSearchForm'));
 
-const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <input {...input} placeholder={label} type={type} />
-      {touched &&
-        ((error && <span>{error}</span>) ||
-          (warning && <span>{warning}</span>))}
-    </div>
-  </div>
-)
+
+
 class ServiceForm extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +32,7 @@ class ServiceForm extends React.Component {
     };
 
     this.AddPModal = this.AddPModal.bind(this)
-    this.load = this.load.bind(this)
+
   }
 
   AddPModal() {
@@ -50,21 +42,15 @@ class ServiceForm extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props.allSer)
     /*this.setState({
       servic: this.props.allSer
     })*/
   }
 
-  /*componentDidUpdate(prevProps) {
-    console.log('fuck')
-    if(this.props.allSer !== prevProps.allSer){
-      console.log('fuck2')
-      this.setState({
-        servic: this.props.allSer 
-      })
-    }
-  }*/
+  handleSubmit = async (values) => {
+    await this.props.addPayment(values)
+  }
+
 
   toggle(tab) {
     if (this.state.activeTab !== tab) {
@@ -74,17 +60,9 @@ class ServiceForm extends React.Component {
     }
   }
 
-  async load() {
-    usNumber = this.props.userSocial
-    let num = {
-      'socialNumber': usNumber
-    }
-    await this.props.usFound(num)
 
-    this.props.found(this.props.user.name)
-  }
   render() {
-    const { handleSubmit, pristine, reset, submitting, mySubmit } = this.props;
+    const { handleSubmit, pristine, reset, submitting } = this.props;
     const { servic } = this.state
     return (
       <div className='container-fluid RB-register'>
@@ -141,63 +119,33 @@ class ServiceForm extends React.Component {
               </TabPane>
               <TabPane tabId="2">
                 <Row>
-                  {
-                    servic.map(allS => {
-                      return (
-                        <Col sm="4" key={allS.id}>
-                          <Card body id={allS.id}>
-                            <CardTitle>{allS.name}</CardTitle>
-                            <CardText>{allS.description}</CardText>
-                            <Button onClick={this.AddPModal}>Go somewhere</Button>
-                          </Card>
-                          <Modal isOpen={this.state.payModal} toggle={this.AddPModal} className={this.props.className}>
-                            <ModalHeader toggle={this.AddPModal}>Assign Payment</ModalHeader>
-                            <ModalBody>
-                              <form onSubmit={mySubmit}>
-                                <div className="row">
-                                  <div className="input-group input-group-icon RB-register__container">
-                                    <label htmlFor="text" className="textformat">Social Number</label>
-                                    <Field className='input'
-                                      name="socialNumber"
-                                      component={renderField}
-                                      type="text" />
-                                  </div>
-                                  <div className="input-group input-group-icon RB-register__container">
-                                    <label htmlFor="name" className="textformat">Client Name</label>
-                                    <Field name="name"
-                                      component={renderField}
-                                      type="text" />
-                                  </div>
-                                  <div className='activeDrop2'>
-                                    <label htmlFor="exampleFormControlSelect1" className="textformat">State</label>
-                                    <Field className="borde"
-                                      name="active"
-                                      component="select">
-                                      <option></option>
-                                      <option value={true}>Active</option>
-                                      <option value={false}>Inactive</option>
-                                    </Field>
-                                  </div>
-                                  <div className="input-group input-group-icon RB-register__container">
-                                    <label htmlFor="outBalance" className="textformat">Amount to pay</label>
-                                    <Field name="outBalance"
-                                      component={renderField}
-                                      type="text" />
-                                  </div>
-                                  <button type="button" className="btn btn-primary" onClick={this.load}>Search Client</button>
-                                  <button type="submit" className="btn btn-primary" disabled={submitting}>Submit</button>
-                                </div>
-                              </form>
-                            </ModalBody>
-                            <ModalFooter>
-                              <Button color="secondary" onClick={this.AddPModal}>Close</Button>
-                            </ModalFooter>
-                          </Modal>
-                        </Col>
-                      )
-                    })
-                  }
+                  
+                    {
+                      servic.map(allS => {
+                        return (
+
+                          <Col sm="4" key={allS.id} className='RB-service-card'>
+                            <Card body id={allS.id}>
+                              <CardTitle>{allS.name}</CardTitle>
+                              <CardText>{allS.description}</CardText>
+                            </Card>
+                            <Modal isOpen={this.state.payModal} toggle={this.AddPModal} className={this.props.className}>
+                              <ModalHeader toggle={this.AddPModal}>{allS.name}</ModalHeader>
+                              <PaymentForm onSubmit={this.handleSubmit}/>
+                              <ModalFooter>
+                                <Button color="secondary" onClick={this.AddPModal}>Close</Button>
+                              </ModalFooter>
+                            </Modal>
+                          </Col>
+
+                        )
+
+                      })
+                    }
+                    
+                  
                 </Row>
+                <Button onClick={this.AddPModal}>Assign Payment</Button>
               </TabPane>
             </TabContent>
           </div>
@@ -208,23 +156,19 @@ class ServiceForm extends React.Component {
   }
 }
 
-
-
 const mapStateToProps = state => ({
-  user: state.userFound.user
+  pay: state.payment.payment,
+  payCode: state.payment.code
 })
 
 const mapDispatchToProps = (dispatch, allPro) => {
   return {
-    usFound: async (values) => {
-      await dispatch(usFound(values))
-    },
-    found: async (name) => {
-      await dispatch(change('service', 'name', name))
+    addPayment: async (values) => {
+      await dispatch(addPayment(values))
     }
   }
-
 }
+
 ServiceForm = reduxForm({
   form: 'service', // a unique name for this form
 })(ServiceForm);
@@ -243,6 +187,5 @@ ServiceForm = connect(
     })
   }
 )(ServiceForm)
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServiceForm);

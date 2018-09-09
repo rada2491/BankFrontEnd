@@ -26,14 +26,12 @@ class AddFavAccountContainer extends Component {
   }
 
   handleSubmit = async (values) => {
-    console.log('entre aqui')
     let newFavAcco = {
       'FavoriteAccountId': values.accountNumber,
       'ApplicationUserId': sessionStorage.getItem('userId')
     }
 
     await this.props.NewFavAccount(newFavAcco)
-    console.log(this.props.resCode)
     if (this.props.resCode === 200) {
       this.setState({
         modalG: true,

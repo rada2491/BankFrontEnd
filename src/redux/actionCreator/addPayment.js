@@ -6,7 +6,6 @@ let resultCode;
 
 
 export default function NewPayment(acc) {
-  console.log(acc)
   return async dispatch => {
     return new Promise(async function (resolve, reject) {
       dispatch({
@@ -22,7 +21,8 @@ export default function NewPayment(acc) {
           }
         })
         resultCode = response.status;
-        const result = response.json()
+        console.log(resultCode)
+        const result = await response.json()
         console.log(result)
         dispatch({
           type: a.CREATE_PAYMENT_SUCCESS,

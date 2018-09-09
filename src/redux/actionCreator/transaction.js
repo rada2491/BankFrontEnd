@@ -32,7 +32,6 @@ export default function NewTransacton(tran) {
         }
         else {
           const result = await response.json()
-          console.log(result)
           dispatch({
             type: a.NO_MONEY_TRANSACTION_FAILURE,
             payload: result,
