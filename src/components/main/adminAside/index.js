@@ -21,46 +21,44 @@ export default class Aside extends React.Component {
   render() {
     if (sessionStorage.getItem('Authorization') === 'Admin') {
       return (
-          <aside className="left-side sidebar-offcanvas cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left aside-position textformat ">
-          <section className="sidebar ">
-              <ul className="sidebar-menu">
-                <li className="nava-item ">
-                  <Link key='1' to='/panelRegisterUser'>Create User</Link>
-                </li>
-                <li className="nava-item">
-                  <Link key='2' to='/panelCreateAccount'>Create Account</Link>
-                </li>
-                <li className="nava-item">
-                  <Link key='3' to='/panelCreateService'>Add new Payment</Link>
-                </li>
-                <li className="nava-item">
-                  <Link key='4' to='/panel'>Update Client</Link>
-                </li>
-              </ul>
-            </section>
-          </aside>
+        <nav className="menu">
+          <span className="hambgr"></span>
+          <ul>
+            <li className="nava-item cbp-spmenu-vertical">
+              <Link key='1' to='/panelRegisterUser'>Create User</Link>
+            </li>
+            <li className="nava-item cbp-spmenu-vertical">
+              <Link key='2' to='/panelCreateAccount'>Create Account</Link>
+            </li>
+            <li className="nava-item cbp-spmenu-vertical">
+              <Link key='3' to='/panelCreateService'>Add new Payment</Link>
+            </li>
+            <li className="nava-item cbp-spmenu-vertical">
+              <Link key='4' to='/panel'>Update Client</Link>
+            </li>
+          </ul>
+        </nav>
       );
     }
     else {
       return (
-        <aside className="left-side sidebar-offcanvas cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left aside-position textformat">
-          <section className="sidebar">
-            <ul className="sidebar-menu">
-              <li className="nava-item ">
-                <Link key='1' to='/panel'>Balance</Link>
-              </li>
-              <li className="nava-item ">
-                <Link key='2' to='/addFavAccount'>Favorite Account / Transactions</Link>
-              </li>
-              <li className="nava-item ">
-                <Link key='3' to='/panel'>Payments</Link>
-              </li>
-              <li className="nava-item ">
-                <Link key='4' to='/panel'>Transaction History</Link>
-              </li>
-            </ul>
-          </section>
-        </aside>
+        <nav className="menu">
+          <span className="hambgr"></span>
+          <ul>
+            <li className="nava-item cbp-spmenu-vertical">
+              <Link key='1' to='/panel'>Balance</Link>
+            </li>
+            <li className="nava-item cbp-spmenu-vertical">
+              <Link key='2' to='/addFavAccount'>Favorite Account / Transactions</Link>
+            </li>
+            <li className="nava-item cbp-spmenu-vertical">
+              <Link key='3' to='/panel'>Payments</Link>
+            </li>
+            <li className="nava-item cbp-spmenu-vertical">
+              <Link key='4' to='/panel'>Transaction History</Link>
+            </li>
+          </ul>
+        </nav>
       );
     }
   }
@@ -85,3 +83,26 @@ export default class Aside extends React.Component {
             </ul>
           </section>
         </aside> */
+
+
+        /*admin aside*/
+        /*
+        <aside className="left-side sidebar-offcanvas cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left aside-position textformat ">
+          <section className="sidebar ">
+            <ul className="sidebar-menu">
+              <li className="nava-item ">
+                <Link key='1' to='/panelRegisterUser'>Create User</Link>
+              </li>
+              <li className="nava-item">
+                <Link key='2' to='/panelCreateAccount'>Create Account</Link>
+              </li>
+              <li className="nava-item">
+                <Link key='3' to='/panelCreateService'>Add new Payment</Link>
+              </li>
+              <li className="nava-item">
+                <Link key='4' to='/panel'>Update Client</Link>
+              </li>
+            </ul>
+          </section>
+        </aside>
+        */

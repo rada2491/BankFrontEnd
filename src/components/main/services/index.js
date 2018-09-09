@@ -163,8 +163,24 @@ class ServiceForm extends React.Component {
                                       type="text" />
                                   </div>
                                   <div className="input-group input-group-icon RB-register__container">
-                                    <label htmlFor="name" className="textformat">User Name</label>
+                                    <label htmlFor="name" className="textformat">Client Name</label>
                                     <Field name="name"
+                                      component={renderField}
+                                      type="text" />
+                                  </div>
+                                  <div className='activeDrop2'>
+                                    <label htmlFor="exampleFormControlSelect1" className="textformat">State</label>
+                                    <Field className="borde"
+                                      name="active"
+                                      component="select">
+                                      <option></option>
+                                      <option value={true}>Active</option>
+                                      <option value={false}>Inactive</option>
+                                    </Field>
+                                  </div>
+                                  <div className="input-group input-group-icon RB-register__container">
+                                    <label htmlFor="outBalance" className="textformat">Amount to pay</label>
+                                    <Field name="outBalance"
                                       component={renderField}
                                       type="text" />
                                   </div>

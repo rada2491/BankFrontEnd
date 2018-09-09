@@ -48,7 +48,7 @@ class ContactForm extends Component {
     return (
       <div className='container-fluid RB-register'>
         <div className="row">
-          <div className="col-md-10 user-form-container">
+          <div className="col-md-11 user-form-container">
             <form onSubmit={handleSubmit}>
               <div className="row">
                 <div className="input-group input-group-icon RB-register__container">

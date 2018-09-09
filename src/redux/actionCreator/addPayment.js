@@ -1,11 +1,12 @@
 import * as a from '../actions/types'
 
-const API = 'https://localhost:44318/api/Services';
+const API = 'https://localhost:44318/api/payment';
 
 let resultCode;
 
 
 export default function NewPayment(acc) {
+  console.log(acc)
   return async dispatch => {
     return new Promise(async function (resolve, reject) {
       dispatch({

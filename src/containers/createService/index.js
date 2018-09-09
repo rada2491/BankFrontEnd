@@ -77,6 +77,7 @@ class CreateServiceContainer extends React.Component {
   }
 
   mySubmit = async (values) => {
+    console.log(values)
     await this.props.addPayment(values)
   }
 
