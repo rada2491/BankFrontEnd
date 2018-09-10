@@ -52,10 +52,15 @@ class UserPayments extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      payModal: false
+      payModal: false,
+      modalPayS: false,
+      modalPayF: false
     }
     this.openModal = this.openModal.bind(this);
     this.sendSubmit = this.sendSubmit.bind(this);
+
+    this.toggle2 = this.toggle2.bind(this);
+    this.toggle3 = this.toggle3.bind(this);
   }
   
   openModal() {
@@ -75,6 +80,31 @@ class UserPayments extends Component {
       "userId": userId
     }
     await this.props.PayService(Payment)
+    console.log(this.props.code)
+    if(this.props.code === 200){
+      this.setState({
+        modalPayS: !this.state.modalPayS
+      })
+    }
+    else {
+      this.setState({
+        modalPayF: !this.state.modalPayF
+      })
+    }
+  }
+
+  toggle2() {
+    this.setState({
+      modalPayS: !this.state.modalPayS,
+      payModal: !this.state.payModal
+    });
+  }
+
+  toggle3() {
+    this.setState({
+      modalPayF: !this.state.modalPayF,
+      payModal: !this.state.payModal
+    });
   }
 
   render() {
@@ -146,6 +176,18 @@ class UserPayments extends Component {
             </Form>
           </ModalBody>
         </Modal>
+        <Modal isOpen={this.state.modalPayS} toggle={this.toggle2} className={this.props.className}>
+              <ModalHeader toggle={this.toggle2}>Pay completed</ModalHeader>
+              <ModalFooter>
+                <Button color="secondary" onClick={this.toggle2}>Close</Button>
+              </ModalFooter>
+            </Modal>
+            <Modal isOpen={this.state.modalPayF} toggle={this.toggle3} className={this.props.className}>
+              <ModalHeader toggle={this.toggle3}>Not enough money</ModalHeader>
+              <ModalFooter>
+                <Button color="secondary" onClick={this.toggle3}>Close</Button>
+              </ModalFooter>
+            </Modal>
         </div>
       </div>
     );
@@ -155,7 +197,8 @@ class UserPayments extends Component {
 
 const mapStateToProps = state => ({
   payment: state.payment.userPayment,
-  Accounts: state.accounts.Accounts
+  Accounts: state.accounts.Accounts,
+  code: state.payment.code
 })
 
 const mapDispatchToProps = (dispatch, allProps) => {

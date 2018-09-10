@@ -22,6 +22,7 @@ export default function PayService(tran) {
           }
         })
         resultCode = response.status;
+        console.log(resultCode)
         if (resultCode === 200) {
           dispatch({
             type: a.PAY_SERVICE_SUCCESS,
@@ -32,7 +33,7 @@ export default function PayService(tran) {
             type: a.ALL_USER_PAYMENTS_REQUEST
           })
           try {
-            const response = await fetch(API2, {
+            const response2 = await fetch(API2, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
@@ -40,11 +41,13 @@ export default function PayService(tran) {
               }
             })
             //console.log(response)
-            const result = await response.json()
-            console.log(result)
+
+            const result2 = await response2.json()
+            console.log(response2.status)
             dispatch({
               type: a.ALL_USER_PAYMENTS_SUCCESS,
-              payload: result
+              code: response2.status,
+              payload: result2
             })
           } catch (error) {
             dispatch({

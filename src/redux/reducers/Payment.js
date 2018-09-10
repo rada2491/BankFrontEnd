@@ -12,7 +12,7 @@ export default function PaymentReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case a.CREATE_PAYMENT_REQUEST:
       return {
-        //...state,
+        ...state,
         isLoaded: false
       }
     case a.CREATE_PAYMENT_SUCCESS:
@@ -31,11 +31,12 @@ export default function PaymentReducer(state = INITIAL_STATE, action) {
     return {
       ...state,
       userPayment: action.payload,
+      code: action.code,
       isLoaded: true
     }
     case a.PAY_SERVICE_REQUEST:
     return {
-      //...state,
+      ...state,
       //userPayment: action.payload,
       isLoaded: false
     }
@@ -43,7 +44,8 @@ export default function PaymentReducer(state = INITIAL_STATE, action) {
     return {
       ...state,
       //userPayment: action.payload,
-      isLoaded: false
+      code: action.code,
+      isLoaded: true
     }
     case a.NO_MONEY_PAYMENT_FAILURE:
     return {

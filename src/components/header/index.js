@@ -51,6 +51,7 @@ class Header extends React.Component {
   }
 
   render() {
+    let name = sessionStorage.getItem('userName')
     if (!this.state.log) {
       return (
         <Redirect to={'/'} />
@@ -61,10 +62,13 @@ class Header extends React.Component {
         <header>
           <div className='container-fluid'>
             <div className="row SA-header">
+              <div className="col-md-1 col-sm-1 col-xs-1 SA-header__container">
+                <img className='SA-header__container-logo' src="https://res.cloudinary.com/radacloud/image/upload/v1536471614/React-Bank/5_White_logo_on_black_288x67.png" alt="" />
+              </div>
               <div className="container col-md-8">
                 <div className="row">
-                  <div className="col-md-1 col-sm-1 col-xs-1 SA-header__container">
-                    <img className='SA-header__container-logo' src="https://res.cloudinary.com/radacloud/image/upload/v1536471614/React-Bank/5_White_logo_on_black_288x67.png" alt="" />
+                  <div className='welcome'>
+                    <p>Welcome: {name}</p>
                   </div>
                   <div className="col-md-10 col-sm-10 col-xs-10">
                     <Nav className='SA-header__nav d-flex justify-content-end '>

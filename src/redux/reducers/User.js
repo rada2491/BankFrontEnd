@@ -3,7 +3,8 @@ import * as a from '../actions/types'
 const INITIAL_STATE = {
   createUser: [],
   userFound: [],
-  isLoaded: false
+  isLoaded: false,
+  code: 0
 }
 
 export default function createUserReducer(state = INITIAL_STATE, action) {
@@ -17,7 +18,15 @@ export default function createUserReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         createUser: action.payload,
-        isLoaded: true
+        isLoaded: true,
+        code: action.code
+      }
+    case a.CREATE_USER_FAILURE:
+      return {
+        ...state,
+        //userPayment: action.payload,
+        isLoaded: false,
+        code: action.code
       }
     case a.FILL_FORM:
       return {

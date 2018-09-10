@@ -156,7 +156,7 @@ class ServiceForm extends React.Component {
                             <CardText>{allS.description}</CardText>
                           </Card>
                           <Modal isOpen={this.state.payModal} toggle={this.AddPModal} className={this.props.className}>
-                            <ModalHeader toggle={this.AddPModal}>{allS.name}</ModalHeader>
+                            <ModalHeader toggle={this.AddPModal}>Assign Payment</ModalHeader>
                             <PaymentForm onSubmit={this.handleSubmit} />
                             <ModalFooter>
                               <Button color="secondary" onClick={this.AddPModal}>Close</Button>

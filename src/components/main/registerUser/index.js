@@ -82,12 +82,6 @@ class ContactForm extends Component {
                     component={renderField}
                     type="Password" />
                 </div>
-                <div className="input-group input-group-icon RB-register__container">
-                  <label htmlFor="Password" className="textformat">Confirm Password</label>
-                  <Field name="confirmPassword"
-                    component={renderField}
-                    type="Password" />
-                </div>
                 <div className='activeDrop3'>
                   <label htmlFor="userType" className="textformat">User Type</label>
                   <Field className="borde"
@@ -108,16 +102,7 @@ class ContactForm extends Component {
 
           </div>
         </div>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-          <ModalBody>
-            <QRCode className='teee' value={namSele + `${idSele}` + emSele} />
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-          </ModalFooter>
-        </Modal>
+        
 
       </div>
     );
