@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import './style.scss';
-
+import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
+import classnames from 'classnames';
 
 export default class Aside extends React.Component {
   constructor(props) {
@@ -34,6 +35,17 @@ export default class Aside extends React.Component {
               <Link key='3' to='/panelCreateService'>Add new Payment</Link>
             </li>
           </ul>
+          <div className='cbp-spmenu-vertical nava-item'>
+            <h3>Currency Rate</h3>
+          </div>
+          <div>
+            <div className='cbp-spmenu-vertical nava-item'>
+              <label htmlFor="">Dollar: $564</label>
+            </div>
+            <div className='cbp-spmenu-vertical nava-item'>
+              <label htmlFor="">Euro: $654</label>
+            </div>
+          </div>
         </nav>
       );
     }

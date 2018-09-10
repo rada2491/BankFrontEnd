@@ -34,9 +34,7 @@ class Complement extends Component {
             <div className="row">
               <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1 aside-container">
                 <div>
-                  
                     <Aside />
-                  
                 </div>
               </div>
               <div className="col-lg-11 col-md-11 col-sm-11 col-xs-11">

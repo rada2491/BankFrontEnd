@@ -126,7 +126,9 @@ body.fixed .navbar {
   transition: color 0.2s, background 0.5s;
 }
 
-.nava-item a {
+.nava-item a,
+.nava-item h3,
+.nava-item label {
   /* non-critical appearance styles */
   display: block;
   padding: 1em;
