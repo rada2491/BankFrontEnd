@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import usFound from '../../../redux/actionCreator/usFound'
 
 let usNumber;
+let fal = false;
+let tru = true;
 
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div>
@@ -80,11 +82,21 @@ class PaymentForm extends Component {
             <div className='activeDrop2'>
               <label htmlFor="exampleFormControlSelect1" className="textformat">State</label>
               <Field className="borde"
-                name="active"
+                name="state"
                 component="select">
                 <option></option>
                 <option value={true}>Active</option>
                 <option value={false}>Inactive</option>
+              </Field>
+            </div>
+            <div className='activeDrop2'>
+              <label htmlFor="currency" className="textformat">Currency</label>
+              <Field className="borde"
+                name="currency"
+                component="select">
+                <option></option>
+                <option value='Dollars'>Dollars</option>
+                <option value='Colons'>Colons</option>
               </Field>
             </div>
             <div className="input-group input-group-icon RB-register__container">

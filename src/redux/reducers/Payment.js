@@ -24,14 +24,33 @@ export default function PaymentReducer(state = INITIAL_STATE, action) {
       }
       case a.ALL_USER_PAYMENTS_REQUEST:
       return {
-        //...state,
+        ...state,
         isLoaded: false
       }
-    case a.ALL_USER_PAYMENTS:
+    case a.ALL_USER_PAYMENTS_SUCCESS:
     return {
       ...state,
       userPayment: action.payload,
       isLoaded: true
+    }
+    case a.PAY_SERVICE_REQUEST:
+    return {
+      //...state,
+      //userPayment: action.payload,
+      isLoaded: false
+    }
+    case a.PAY_SERVICE_SUCCESS:
+    return {
+      ...state,
+      //userPayment: action.payload,
+      isLoaded: false
+    }
+    case a.NO_MONEY_PAYMENT_FAILURE:
+    return {
+      ...state,
+      //userPayment: action.payload,
+      isLoaded: false,
+      code: action.code
     }
     default:
       return state

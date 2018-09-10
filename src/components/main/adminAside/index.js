@@ -33,9 +33,6 @@ export default class Aside extends React.Component {
             <li className="nava-item cbp-spmenu-vertical">
               <Link key='3' to='/panelCreateService'>Add new Payment</Link>
             </li>
-            <li className="nava-item cbp-spmenu-vertical">
-              <Link key='4' to='/panel'>Update Client</Link>
-            </li>
           </ul>
         </nav>
       );

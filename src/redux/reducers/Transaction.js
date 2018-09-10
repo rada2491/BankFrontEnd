@@ -22,12 +22,12 @@ export default function createUserReducer(state = INITIAL_STATE, action) {
         isLoaded: true
       }
     case a.NO_MONEY_TRANSACTION_FAILURE:
-    return {
-      ...state,
-      transaction: action.payload,
-      code: action.code,
-      isLoaded: true
-    }
+      return {
+        ...state,
+        transaction: action.payload,
+        code: action.code,
+        isLoaded: true
+      }
     default:
       return state
   }

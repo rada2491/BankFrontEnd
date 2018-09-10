@@ -65,7 +65,7 @@ class CreateServiceContainer extends React.Component {
     ('entre a upgradear las nalgas')
     if (this.props.allSer !== preProps.allSer) {
       this.setState({
-        allServicesDB: this.props.allSer
+        allSer: this.props.allSer
       })
     }
   }
@@ -74,7 +74,7 @@ class CreateServiceContainer extends React.Component {
 
   render() {
     const { services } = this.props
-    const { allSer } = this.props
+    const { allSer } = this.state
     //const { allSer } = this.state
     return (
       <div>
@@ -87,8 +87,7 @@ class CreateServiceContainer extends React.Component {
             <p>Service state: {this.state.acti}</p>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            <Button color="secondary" onClick={this.toggle}>Close</Button>
           </ModalFooter>
         </Modal>
       </div>
@@ -100,7 +99,7 @@ class CreateServiceContainer extends React.Component {
 const mapStateToProps = state => ({
   services: state.service.createService,
   resCode: state.service.code,
-  allSer: state.service.AllSer,
+  allSer: state.service.AllSer || [],
   pay: state.payment.payment,
   payCode: state.payment.code
 })

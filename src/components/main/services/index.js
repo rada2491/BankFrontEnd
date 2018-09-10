@@ -24,13 +24,17 @@ class ServiceForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggle = this.toggle.bind(this);
+
     this.state = {
       activeTab: '1',
       payModal: false,
-      servic: this.props.allSer
+      servic: this.props.allSer,
+      modalPayS: false,
+      modalPayF: false
     };
-
+    this.toggle = this.toggle.bind(this);
+    this.toggle2 = this.toggle2.bind(this);
+    this.toggle3 = this.toggle3.bind(this);
     this.AddPModal = this.AddPModal.bind(this)
 
   }
@@ -49,6 +53,16 @@ class ServiceForm extends React.Component {
 
   handleSubmit = async (values) => {
     await this.props.addPayment(values)
+    if (this.props.payCode === 200) {
+      this.setState({
+        modalPayS: !this.state.modalPayS
+      })
+    }
+    else {
+      this.setState({
+        modalPayF: !this.state.modalPayF
+      })
+    }
   }
 
 
@@ -58,6 +72,20 @@ class ServiceForm extends React.Component {
         activeTab: tab
       });
     }
+  }
+
+  toggle2() {
+    this.setState({
+      modalPayS: !this.state.modalPayS,
+      payModal: !this.state.payModal
+    });
+  }
+
+  toggle3() {
+    this.setState({
+      modalPayF: !this.state.modalPayF,
+      payModal: !this.state.payModal
+    });
   }
 
 
@@ -119,38 +147,43 @@ class ServiceForm extends React.Component {
               </TabPane>
               <TabPane tabId="2">
                 <Row>
-                  
-                    {
-                      servic.map(allS => {
-                        return (
-
-                          <Col sm="4" key={allS.id} className='RB-service-card'>
-                            <Card body id={allS.id}>
-                              <CardTitle>{allS.name}</CardTitle>
-                              <CardText>{allS.description}</CardText>
-                            </Card>
-                            <Modal isOpen={this.state.payModal} toggle={this.AddPModal} className={this.props.className}>
-                              <ModalHeader toggle={this.AddPModal}>{allS.name}</ModalHeader>
-                              <PaymentForm onSubmit={this.handleSubmit}/>
-                              <ModalFooter>
-                                <Button color="secondary" onClick={this.AddPModal}>Close</Button>
-                              </ModalFooter>
-                            </Modal>
-                          </Col>
-
-                        )
-
-                      })
-                    }
-                    
-                  
+                  {
+                    this.props.allSer.map(allS => {
+                      return (
+                        <Col sm="4" key={allS.id} className='RB-service-card'>
+                          <Card body id={allS.id}>
+                            <CardTitle>{allS.name}</CardTitle>
+                            <CardText>{allS.description}</CardText>
+                          </Card>
+                          <Modal isOpen={this.state.payModal} toggle={this.AddPModal} className={this.props.className}>
+                            <ModalHeader toggle={this.AddPModal}>{allS.name}</ModalHeader>
+                            <PaymentForm onSubmit={this.handleSubmit} />
+                            <ModalFooter>
+                              <Button color="secondary" onClick={this.AddPModal}>Close</Button>
+                            </ModalFooter>
+                          </Modal>
+                        </Col>
+                      )
+                    })
+                  }
                 </Row>
                 <Button onClick={this.AddPModal}>Assign Payment</Button>
               </TabPane>
             </TabContent>
+            <Modal isOpen={this.state.modalPayS} toggle={this.toggle2} className={this.props.className}>
+              <ModalHeader toggle={this.toggle2}>Payment created</ModalHeader>
+              <ModalFooter>
+                <Button color="secondary" onClick={this.toggle2}>Close</Button>
+              </ModalFooter>
+            </Modal>
+            <Modal isOpen={this.state.modalPayF} toggle={this.toggle3} className={this.props.className}>
+              <ModalHeader toggle={this.toggle3}>Payment not created</ModalHeader>
+              <ModalFooter>
+                <Button color="secondary" onClick={this.toggle3}>Close</Button>
+              </ModalFooter>
+            </Modal>
           </div>
         </div>
-
       </div>
     );
   }

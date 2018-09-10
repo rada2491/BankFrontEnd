@@ -21,9 +21,7 @@ export default function NewPayment(acc) {
           }
         })
         resultCode = response.status;
-        console.log(resultCode)
         const result = await response.json()
-        console.log(result)
         dispatch({
           type: a.CREATE_PAYMENT_SUCCESS,
           payload: result,
