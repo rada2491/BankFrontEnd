@@ -35,17 +35,6 @@ export default class Aside extends React.Component {
               <Link key='3' to='/panelCreateService'>Add new Payment</Link>
             </li>
           </ul>
-          <div className='cbp-spmenu-vertical nava-item'>
-            <h3>Currency Rate</h3>
-          </div>
-          <div>
-            <div className='cbp-spmenu-vertical nava-item'>
-              <label htmlFor="">Dollar: $564</label>
-            </div>
-            <div className='cbp-spmenu-vertical nava-item'>
-              <label htmlFor="">Euro: $654</label>
-            </div>
-          </div>
         </nav>
       );
     }
@@ -62,9 +51,6 @@ export default class Aside extends React.Component {
             </li>
             <li className="nava-item cbp-spmenu-vertical">
               <Link key='3' to='/userPayment'>Payments</Link>
-            </li>
-            <li className="nava-item cbp-spmenu-vertical">
-              <Link key='4' to='/panel'>Transaction History</Link>
             </li>
           </ul>
         </nav>

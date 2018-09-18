@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
+import './style.scss'
 
 /*import './style.scss'
 import './util.scss'*/
@@ -37,9 +38,11 @@ class UserPanel extends React.Component {
     const { Accounts } = this.props
     if (sessionStorage.getItem("Authorization") === "Admin") {
       return (
-        <div>
-          <p>“Success consists of going from failure to failure without loss of enthusiasm.”–Winston Churchill</p>
-          <img src="https://res.cloudinary.com/radacloud/image/upload/v1536014090/React-Bank/Bank.png" alt="" />
+        <div className='loginHom'>
+          <p >“Success consists of going from failure to failure without loss of enthusiasm.”–Winston Churchill</p>
+          <div className='loginHome'>
+            <img src="https://res.cloudinary.com/radacloud/image/upload/v1536014090/React-Bank/Bank.png" alt="" />
+          </div>
         </div>
       );
     }
